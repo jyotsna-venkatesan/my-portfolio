@@ -71,8 +71,7 @@ const projects = [
   {
     title: 'Sporkify',
     description: 'A recipe platform that brings the familiar playlist experience to cooking',
-    imageUrl:
-      'https://private-user-images.githubusercontent.com/75362566/388920148-edc68686-476a-49d0-998f-c766372ce995.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzMzMzY3OTgsIm5iZiI6MTczMzMzNjQ5OCwicGF0aCI6Ii83NTM2MjU2Ni8zODg5MjAxNDgtZWRjNjg2ODYtNDc2YS00OWQwLTk5OGYtYzc2NjM3MmNlOTk1LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEyMDQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMjA0VDE4MjEzOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTJmZjYwYmEzNDdhZjQ1Y2RkMTdkOThiYjdjMDg1Y2UzMWQ5YWQ5ZGZiMTA3MzQ1ZWJiMzU3ZjZhYjlhZmI2MDYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.TJW2a12zozlfY7sB6Fy33jLuhj-XjkNm1_TStjfusLA',
+    imageUrl: 'https://i.imgur.com/doq5JTL.jpeg',
     demoUrl:
       'https://www.figma.com/design/AJkkbjMsx7ShPjfLPkXi4p/Sporkify?node-id=0-1&t=oZTY6zLMq0vdyDvu-1',
     githubUrl: 'https://github.com/jyotsna-venkatesan/sporkify',
@@ -86,6 +85,7 @@ const projects = [
       'https://www.figma.com/design/oIwYiKfwOyKtd9a442e9LA/JustDecide?node-id=55-49&t=qIQx7gHNMmVOvRrE-1',
     githubUrl: 'https://github.com/jyotsna-venkatesan/Just-Decide',
   },
+
   {
     title: 'FastAPI User Authentification',
     description:
@@ -125,6 +125,14 @@ const projects = [
     imageUrl: 'https://i.imgur.com/FgmraNz.jpeg',
     demoUrl: 'https://fundmap.live/',
     githubUrl: 'https://github.com/jyotsna-venkatesan/FundMap',
+  },
+  {
+    title: 'Powehi',
+    description:
+      'An immersive web application where you explore the universe through the James Webb Space Telescope.',
+    imageUrl: 'https://i.imgur.com/FHzQWAj.png',
+    demoUrl: 'https://github.com/jyotsna-venkatesan/Powehi',
+    githubUrl: 'https://github.com/jyotsna-venkatesan/Powehi',
   },
 ]
 </script>
