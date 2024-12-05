@@ -2,7 +2,8 @@
   <section id="projects" class="bg-[#D3D3D3]">
     <div class="relative mx-auto max-w-6xl py-12 sm:py-16">
       <div class="mb-8">
-        <h1 class="font-inter font-bold text-[24px] text-[#]">project gallery</h1>
+        <h1 class="font-inter font-bold text-[24px] text-[#303030]">project gallery</h1>
+        <p class="font-inter text-[14px] text-[#303030]">(No, they aren't all black and white.)</p>
       </div>
       <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <li
