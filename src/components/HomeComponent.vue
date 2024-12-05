@@ -67,7 +67,7 @@
             <br />
             <br />
             In a world of flying cars and talking robots, I hope I get front row seats to
-            participant in writing tomorrow's plot twist.
+            participate in writing tomorrow's plot twist.
           </div>
 
           <!-- Right links -->
