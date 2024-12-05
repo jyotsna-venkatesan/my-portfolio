@@ -1,5 +1,5 @@
 <template id="about">
-  <section class="isolate overflow-hidden bg-[#181818] px-6 lg:px-8" id="about">
+  <section class="isolate overflow-hidden bg-[#181818] px-6 lg:px-8" id="content">
     <div class="relative mx-auto max-w-6xl py-24 sm:py-32">
       <!-- Text section -->
       <div class="mx-auto text-center lg:max-w-2xl">

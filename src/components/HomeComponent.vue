@@ -111,6 +111,7 @@ const navigation = [
   { name: 'About', href: '#about' },
   { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
+  { name: 'Side-quests', href: '#content' },
   { name: 'Contact', href: '#contact' },
 ]
 const mobileMenuOpen = ref(false)

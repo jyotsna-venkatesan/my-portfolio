@@ -1,35 +1,16 @@
 # portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+## Live Demo
+[https://main--jyotsnav.netlify.app/](https://main--jyotsnav.netlify.app/)
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Tech Stack
+- Vue.js 3
+- Tailwind CSS
+- JavaScript
+- Vite
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+## Just for me:
+git add .
+git commit -m "Update message"
+git push
