@@ -12,8 +12,8 @@
             <p class="text-[14px]">
               Having called Dubai, London, the United States, and six different Indian cities home,
               you might think I'd be confused about where I belong. But my love for masala dosa and
-              super-useful talent of sleeping through traffic will tell you I'm from Bangalore, the
-              Silicon Valley of India.
+              super-useful talent of sleeping through traffic will tell you I'm from
+              <b>Bangalore, the Silicon Valley of India.</b>
               <br />
               <br />
               I juggle Kannada, Tamil, Hindi, and barely considerable Arabic to collect secret
@@ -22,7 +22,7 @@
               <br />
               <br />
               Now I'm here, trying to use code and creativity to help write tomorrow's chapters -
-              both mine and others'.
+              <b>both mine and others'.</b>
             </p>
           </blockquote>
         </div>

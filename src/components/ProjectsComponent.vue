@@ -1,14 +1,14 @@
 <template id="projects">
-  <section id="projects" class="bg-[#181818]">
+  <section id="projects" class="bg-[#D3D3D3]">
     <div class="relative mx-auto max-w-6xl py-12 sm:py-16">
       <div class="mb-8">
-        <h1 class="font-inter font-bold text-[24px] text-[#d3d3d3]">project gallery</h1>
+        <h1 class="font-inter font-bold text-[24px] text-[#]">project gallery</h1>
       </div>
       <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <li
           v-for="project in projects"
           :key="project.title"
-          class="col-span-1 bg-[#d3d3d3] overflow-hidden rounded-2xl"
+          class="col-span-1 bg-[#CBCBCB] border-x border-y border-[#181818] overflow-hidden rounded-2xl"
         >
           <div class="group relative h-48 w-full overflow-hidden">
             <img
