@@ -9,7 +9,7 @@
             class="text-xl/8 font-inter text-[14px] text-[#303030] py-4"
             style="line-height: 1.4em"
           >
-            <p>
+            <p class="text-[14px]">
               Having called Dubai, London, the United States, and six different Indian cities home,
               you might think I'd be confused about where I belong. But my love for masala dosa and
               super-useful talent of sleeping through traffic will tell you I'm from Bangalore, the
