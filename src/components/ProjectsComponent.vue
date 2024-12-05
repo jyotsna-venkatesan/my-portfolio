@@ -134,5 +134,13 @@ const projects = [
     demoUrl: 'https://github.com/jyotsna-venkatesan/Powehi',
     githubUrl: 'https://github.com/jyotsna-venkatesan/Powehi',
   },
+  {
+    title: 'SkyByte',
+    description:
+      'Revolutionizes travel across the Greater Bay Area by combining seamless intermodal transportation with premium experiences, tokenizing luxury.',
+    imageUrl: 'https://github.com/tanyabudhrani/SkyByte/raw/main/header.jpg',
+    demoUrl: 'https://github.com/tanyabudhrani/SkyByte',
+    githubUrl: 'https://github.com/tanyabudhrani/SkyByte',
+  },
 ]
 </script>
