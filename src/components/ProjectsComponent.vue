@@ -70,6 +70,30 @@
 <script setup>
 const projects = [
   {
+    title: 'Lesuly',
+    description:
+      'An AI-powered educational tool that helps teachers transform lesson content into high-quality questions. ',
+    imageUrl: 'https://i.imgur.com/mkHAlTt.png',
+    demoUrl: 'https://coderoad-ai.netlify.app/',
+    githubUrl: 'https://github.com/jyotsna-venkatesan/lesuly',
+  },
+  {
+    title: 'CodeRoad',
+    description:
+      'An AI-powered project roadmap generator that transforms development ideas into structured, phase-by-phase plans.',
+    imageUrl: 'https://i.imgur.com/IK9z0u0.png',
+    demoUrl: 'https://coderoad-ai.netlify.app/',
+    githubUrl: 'https://github.com/jyotsna-venkatesan/Code-Road',
+  },
+  {
+    title: 'Vocabia',
+    description:
+      'An app that helps users learn any language by providing example sentences, synonyms, antonyms, and related words using natural language processing.',
+    imageUrl: 'https://i.imgur.com/MEedLZX.png',
+    demoUrl: 'https://vocabia-production.up.railway.app/',
+    githubUrl: 'https://github.com/jyotsna-venkatesan/Vocabia',
+  },
+  {
     title: 'Sporkify',
     description: 'A recipe platform that brings the familiar playlist experience to cooking',
     imageUrl: 'https://i.imgur.com/doq5JTL.jpeg',
