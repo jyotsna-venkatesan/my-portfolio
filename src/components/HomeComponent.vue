@@ -1,103 +1,63 @@
 <template>
-  <div class="bg-[#181818] overflow-hidden min-h-[100vh]">
-    <header class="absolute inset-x-0 top-0 z-50">
-      <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div class="flex lg:flex-1"></div>
-        <div class="flex lg:hidden">
-          <button
-            type="button"
-            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 font-inter text-[#F1F1F1]"
-            @click="mobileMenuOpen = true"
-          >
-            <span class="sr-only">Open main menu</span>
-            <Bars3Icon class="size-6" aria-hidden="true" />
-          </button>
-        </div>
-        <div class="hidden lg:flex lg:gap-x-12">
+  <div class="overflow-hidden min-h-[100vh] bg-[#181818] bg-cover bg-center bg-no-repeat relative">
+    <div class="absolute inset-0"></div>
+    <header class="absolute top-0 left-0 right-0 z-50 flex justify-center">
+      <nav class="items-center gap-6 px-6 py-6 w-max hidden lg:flex" aria-label="Global">
+        <template v-for="(item, index) in navigation" :key="item.name">
           <a
-            v-for="item in navigation"
-            :key="item.name"
             :href="item.href"
             @click="(e) => scrollToSection(e, item.href)"
-            class="text-sm/6 font-inter text-[18px] text-[#F1F1F1] hover:text-gray-400"
-            >{{ item.name }}</a
+            class="text-[14px] font-inter text-[#DF97C0] hover:text-[#FFE2F3] transition-colors"
           >
-        </div>
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end"></div>
+            {{ item.name }}
+          </a>
+          <!-- vertical divider -->
+          <span v-if="index < navigation.length - 1" class="h-4 w-px bg-[#DF97C0]"></span>
+        </template>
       </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <div class="lg:hidden absolute top-4 right-4">
+        <button
+          type="button"
+          class="inline-flex items-center justify-center rounded-md p-2.5 text-[#DF97C0]"
+          @click="mobileMenuOpen = true"
+        >
+          <span class="sr-only">Open main menu</span>
+          <Bars3Icon class="size-6" aria-hidden="true" />
+        </button>
+      </div>
+
+      <!-- Mobile Menu Drawer -->
       <Dialog class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
         <div class="fixed inset-0 z-50" />
         <DialogPanel
-          class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-[#181818] px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+          class="fixed inset-y-0 right-0 z-50 w-full max-w-xs bg-[#DF97C0] px-6 py-6 ring-1 ring-black/10"
         >
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-end">
             <button
               type="button"
-              class="-m-2.5 rounded-md p-2.5 text-inter text-[#F1F1F1]"
+              class="rounded-md p-2.5 text-black"
               @click="mobileMenuOpen = false"
             >
               <span class="sr-only">Close menu</span>
               <XMarkIcon class="size-6" aria-hidden="true" />
             </button>
           </div>
-          <Mydresumeiv class="mt-6 flow-root">
-            <div class="-my-6 divide-y divide-gray-500/10">
-              <div class="space-y-2 py-6">
-                <a
-                  v-for="item in navigation"
-                  :key="item.name"
-                  :href="item.href"
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base/7 text-inter text-[#F1F1F1] hover:bg-gray-50"
-                  >{{ item.name }}</a
-                >
-              </div>
-              <div class="py-6"></div>
-            </div>
-          </Mydresumeiv>
+          <div class="mt-6 space-y-4">
+            <a
+              v-for="item in navigation"
+              :key="item.name"
+              :href="item.href"
+              @click="mobileMenuOpen = false"
+              class="block text-base font-inter text-black hover:text-gray-700"
+            >
+              {{ item.name }}
+            </a>
+          </div>
         </DialogPanel>
       </Dialog>
     </header>
-    <div class="relative isolate px-6 pt-14 lg:px-8 min-h-[90vh]">
-      <div class="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
-        <div class="flex justify-between items-start gap-8">
-          <!-- Left text box -->
-          <div class="max-w-md px-3 py-1 text-sm/6 font-inter text-[18px] text-[#F1F1F1]">
-            A Computer Science student with a minor in Business Economics at the Hong Kong
-            Polytechnic University.
-            <br />
-            <br />
-            In a world of flying cars and talking robots, I hope I get front row seats to
-            participate in writing tomorrow's plot twist.
-          </div>
-
-          <!-- Right links -->
-          <div class="flex flex-col gap-4 text-sm/6 font-inter text-[18px] text-[#F1F1F1]">
-            <a
-              href="/CV.pdf"
-              target="_blank"
-              class="flex items-center hover:text-gray-400 transition-colors"
-            >
-              My resume <span class="ml-2">→</span>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/jyotsna-venkatesan-8684801b8/"
-              target="_blank"
-              class="flex items-center hover:text-gray-400 transition-colors"
-            >
-              LinkedIn <span class="ml-2">→</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- SVG Name positioning -->
-      <div
-        class="absolute bottom-20 -z-10 w-full transform translate-y-1/4 left-1/2 -translate-x-1/2 md:left-auto md:-translate-x-0 md:right-20 max-w-[90%] md:max-w-[80%]"
-      >
-        <img :src="jyotsna" alt="Jyotsna" class="w-full h-auto object-contain" />
-      </div>
-    </div>
   </div>
 </template>
 
@@ -105,7 +65,6 @@
 import { ref } from 'vue'
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
-import jyotsna from '../assets/jyotsna.png'
 
 const navigation = [
   { name: 'About', href: '#about' },
