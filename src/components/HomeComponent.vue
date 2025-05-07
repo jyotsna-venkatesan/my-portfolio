@@ -58,6 +58,30 @@
         </DialogPanel>
       </Dialog>
     </header>
+
+    <!-- landing content -->
+    <div class="relative mx-auto max-w-5xl py-12 sm:py-16 px-4 sm:px-6">
+      <!-- quote -->
+      <h1 class="font-inter text-[20px] sm:text-[24px] lg:text-[35px] text-[#F1F1F1] mt-8">
+        In a world of generative AI and self-improving code, I hope to be at the forefront,
+        engineering the next breakthrough that defines tomorrow’s plot twist.
+      </h1>
+      <h1
+        class="font-inter text-[20px] sm:text-[24px] lg:text-[35px] text-[#DF97C0] mt-2"
+        style="text-shadow: 0 0 8px #cd348b"
+      >
+        - Jyotsna Venkatesan
+      </h1>
+
+      <!-- the image part -->
+      <img
+        src="/landing-bg.png"
+        alt="holographic background"
+        class="mt-8 w-full mx-auto rounded-sm shadow-lg"
+      />
+
+      <!-- bouncing hearts -->
+    </div>
   </div>
 </template>
 
