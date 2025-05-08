@@ -1,9 +1,9 @@
 <template id="about">
-  <section class="isolate overflow-hidden bg-[#181818] px-6 lg:px-8" id="about">
-    <div class="relative mx-auto max-w-6xl py-24 sm:py-32">
+  <section class="isolate overflow-hidden bg-[#181818] pt-0 pb-0" id="about">
+    <div class="relative mx-auto max-w-6xl py-16 sm:py-24 px-6 lg:px-8">
       <figure class="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-16">
         <!-- Image section with spinning star (hidden on mobile) -->
-        <div class="w-1/2 mx-auto relative hidden md:block" ref="imageContainer">
+        <div class="w-1/4 mx-14 relative hidden md:block" ref="imageContainer">
           <img
             :src="sidebg"
             alt="About side image"
@@ -28,41 +28,75 @@
         </div>
         <!-- Text section -->
         <div class="lg:max-w-md">
-          <p class="font-inter text-[14px] text-[#F1F1F1] text-right">about me</p>
+          <p
+            class="font-inter text-[35px] text-[#DF97C0] text-right"
+            style="text-shadow: 0 0 8px #cd348b"
+          >
+            about me
+          </p>
           <blockquote
-            class="font-inter text-right text-[20px] sm:text-[24px] lg:text-[30px] text-[#F1F1F1] py-4"
+            class="font-inter text-right text-[20px] sm:text-[24px] lg:text-[14px] text-[#F1F1F1] py-4 relative"
             ref="paragraphsContainer"
           >
-            <p
-              class="pb-16 transition-opacity duration-700 ease-in-out"
-              :style="{ opacity: paragraphOpacity[0] }"
-              ref="firstParagraph"
-            >
-              Having called Dubai, London, the United States, and six different Indian cities home,
-              you might think I'd be confused about where I belong. But my love for masala dosa and
-              super-useful talent of sleeping through traffic will tell you I'm from
-              <span class="text-[#DF97C0]">Bangalore, the Silicon Valley of India.</span>
-            </p>
-            <p
-              class="pb-16 transition-opacity duration-700 ease-in-out"
-              :style="{ opacity: paragraphOpacity[1] }"
-              ref="secondParagraph"
-            >
-              I juggle Kannada, Tamil, Hindi, and barely considerable Arabic to collect secret
-              languages to switch to. Each one is a different way to share stories that you don't
-              want everyone knowing.
-            </p>
-            <p
-              class="transition-opacity duration-700 ease-in-out"
-              :style="{ opacity: paragraphOpacity[2] }"
-              ref="thirdParagraph"
-            >
-              Now I'm here, trying to use code and creativity to help write tomorrow's chapters -
-              <span class="text-[#B19EF2]">both mine and others'.</span>
-            </p>
+            <!-- First paragraph -->
+            <div class="relative">
+              <div
+                class="absolute right-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#DF97C0] to-transparent h-full"
+                :style="{ opacity: paragraphOpacity[0] }"
+              ></div>
+              <p
+                class="pb-16 transition-opacity duration-700 ease-in-out pr-6"
+                :style="{ opacity: paragraphOpacity[0] }"
+                ref="firstParagraph"
+              >
+                Having called Dubai, London, the United States, and six different Indian cities
+                home, you might think I'd be confused about where I belong. But my love for masala
+                dosa and super-useful talent of sleeping through traffic will tell you I'm from
+                <span class="text-[#DF97C0]">Bangalore, the Silicon Valley of India.</span>
+              </p>
+            </div>
+
+            <!-- Second paragraph -->
+            <div class="relative">
+              <div
+                class="absolute right-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#DF97C0] to-transparent h-full"
+                :style="{ opacity: paragraphOpacity[1] }"
+              ></div>
+              <p
+                class="pb-16 transition-opacity duration-700 ease-in-out pr-6"
+                :style="{ opacity: paragraphOpacity[1] }"
+                ref="secondParagraph"
+              >
+                I juggle Kannada, Tamil, Hindi, and barely considerable Arabic to collect secret
+                languages to switch to. Each one is a different way to share stories that you don't
+                want everyone knowing.
+              </p>
+            </div>
+
+            <!-- Third paragraph -->
+            <div class="relative">
+              <div
+                class="absolute right-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#DF97C0] to-transparent h-full"
+                :style="{ opacity: paragraphOpacity[2] }"
+              ></div>
+              <p
+                class="transition-opacity duration-700 ease-in-out pr-6"
+                :style="{ opacity: paragraphOpacity[2] }"
+                ref="thirdParagraph"
+              >
+                Now I'm here, trying to use code and creativity to help write tomorrow's chapters -
+                <span class="text-[#B19EF2]">both mine and others'.</span>
+              </p>
+            </div>
           </blockquote>
         </div>
       </figure>
+    </div>
+    <div
+      class="w-screen relative left-1/2 right-1/2 -mx-[50vw] -mb-5"
+      style="margin-left: calc(-50vw + 0px); margin-right: calc(-50vw + 0px)"
+    >
+      <img :src="wave" alt="wave bg" class="w-full h-auto object-cover relative z-10" />
     </div>
   </section>
 </template>
@@ -70,6 +104,7 @@
 <script setup>
 import sidebg from '/sidebg.png'
 import spin from '/spin.png'
+import wave from '/wave-divider.png'
 import { ref, onMounted, onUnmounted } from 'vue'
 
 // References and state for the spinning star

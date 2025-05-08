@@ -1,7 +1,7 @@
 <template>
   <div
     ref="landingSection"
-    class="overflow-hidden min-h-[100vh] bg-[#181818] bg-cover bg-center bg-no-repeat relative flex flex-col justify-center"
+    class="overflow-hidden min-h-[100vh] bg-[#181818] bg-cover bg-center bg-no-repeat relative flex flex-col justify-center pb-0"
   >
     <div class="absolute inset-0"></div>
     <header class="absolute top-0 left-0 right-0 z-50 flex justify-center">
@@ -123,7 +123,7 @@
       <!-- lower text and buttons -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8">
         <div>
-          <p class="font-inter text-[14px] sm:text-[16px] text-[#F1F1F1] max-w-xs">
+          <p class="font-inter text-[20px] sm:text-[24px] lg:text-[14px] text-[#F1F1F1] max-w-xs">
             A Computer Science student with a minor in Business Economics at the Hong Kong
             Polytechnic University.
           </p>
