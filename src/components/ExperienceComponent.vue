@@ -1,34 +1,46 @@
 <template id="experience">
-  <section id="experience" class="bg-[#090909] -translate-y-4">
-    <div class="relative mx-auto max-w-6xl py-16 sm:py-24 px-6 lg:px-8">
-      <div class="mb-8">
+  <section id="experience" class="bg-[#181818] -translate-y-4" ref="experienceSection">
+    <div class="relative py-16 sm:py-24">
+      <div class="mb-8 px-6 mx-auto max-w-6xl lg:px-8">
         <p class="font-inter text-[35px] text-[#DF97C0]" style="text-shadow: 0 0 8px #cd348b">
           experience
         </p>
       </div>
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div
-          v-for="stat in reversedStats"
-          :key="stat.name"
-          class="flex flex-col p-6 bg-[#090909] bg-opacity-20 border border-[#DF97C0] rounded-lg"
-        >
-          <div class="flex items-start gap-x-4 mb-3">
-            <p class="font-inter font-black text-[16px] text-[#F1F1F1] shrink-0">{{ stat.name }}</p>
-            <div class="flex flex-col">
-              <p class="font-inter font-bold text-[14px] text-[#F1F1F1]">{{ stat.value }}</p>
-              <p class="font-inter text-[12px] text-[#F1F1F1]">{{ stat.date }}</p>
-            </div>
-          </div>
-          <div class="mt-2">
-            <p class="font-inter text-[13px] text-[#F1F1F1] mb-2">{{ stat.description }}</p>
-            <div class="flex flex-wrap gap-2">
-              <span
-                v-for="skill in stat.skills"
-                :key="skill"
-                class="px-2 py-1 rounded-full bg-[#181818] border border-[#DF97C0] text-[#F1F1F1] text-[11px] font-inter"
-              >
-                {{ skill }}
-              </span>
+      <div class="cards-wrapper overflow-hidden">
+        <div class="columns-container" :style="containerStyle" ref="cardsContainer">
+          <div
+            v-for="colIndex in getNumberOfColumns()"
+            :key="'col-' + colIndex"
+            class="column"
+            :style="getColumnStyle(colIndex)"
+          >
+            <div
+              v-for="(stat, statIndex) in getColumnStats(colIndex)"
+              :key="stat.name"
+              class="card-item"
+              :style="getCardStyle(statIndex + getColumnStartIndex(colIndex))"
+            >
+              <div class="flex items-start gap-x-4 mb-3">
+                <p class="font-inter font-black text-[16px] text-[#181818] shrink-0">
+                  {{ stat.name }}
+                </p>
+                <div class="flex flex-col">
+                  <p class="font-inter font-bold text-[14px] text-[#181818]">{{ stat.value }}</p>
+                  <p class="font-inter text-[12px] text-[#181818]">{{ stat.date }}</p>
+                </div>
+              </div>
+              <div class="mt-2">
+                <p class="font-inter text-[13px] text-[#181818] mb-2">{{ stat.description }}</p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    v-for="skill in stat.skills"
+                    :key="skill"
+                    class="px-4 py-2 rounded-md bg-[#181818] border border-[#DF97C0] text-[#F1F1F1] text-[11px] font-inter"
+                  >
+                    {{ skill }}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -38,69 +50,72 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted, onUnmounted, reactive } from 'vue'
+
+// Debug flag to log transition points once
+const debugOnce = ref(true)
 
 const stats = [
   {
-    name: '01',
+    name: '08',
     value: 'Front-end Web Developer at Sleep Deprived Dreamers',
     date: 'Jun 2021 - Jul 2021',
     description: 'Worked on implementing modern UI/UX designs using Knorishh, HTML, CSS, and JS.',
-    skills: ['HTML', 'CSS', 'JavaScript']
+    skills: ['HTML', 'CSS', 'JavaScript'],
   },
   {
-    name: '02',
+    name: '07',
     value: 'Founding Developer and Moderator at Auxiliors',
     date: 'May 2021 - Aug 2021',
     description:
       'Established a community-driven mental support platform, while moderating sessions on self-confidence.',
-    skills: ['Community Building', 'Web Development']
+    skills: ['Community Building', 'Web Development'],
   },
   {
-    name: '03',
+    name: '06',
     value: 'Digital Media Creator at AInspire',
     date: 'Apr 2021 - May 2022',
     description: 'Created engaging digital content to increase brand awareness and engagement.',
-    skills: ['Digital Media', 'Content Creation']
+    skills: ['Digital Media', 'Content Creation'],
   },
   {
-    name: '04',
+    name: '05',
     value: 'Student Assistant at CLP',
     date: 'Feb 2023 - Apr 2023',
     description:
       'Assisted in testing and quality assurance efforts for the CLP Generator Inspection Robot.',
-    skills: ['QA Testing', 'Robotics']
+    skills: ['QA Testing', 'Robotics'],
   },
   {
-    name: '05',
+    name: '04',
     value: 'Web/ Front-End Developer Intern at Oxbridge Economics',
     date: 'Jun 2023 - Aug 2023',
     description:
       'Developed and maintained web applications, focusing on user experience and performance optimization.',
-    skills: ['React', 'JavaScript', 'UI/UX']
+    skills: ['React', 'JavaScript', 'UI/UX'],
   },
   {
-    name: '06',
+    name: '03',
     value: 'UI/UX Designer at PolyU Smart Cities Research Institute',
     date: 'Feb 2024 - May 2024',
     description:
       'Designed and developed user interfaces for the software QC Spatial-3Dx, focusing on accessibility and user experience.',
-    skills: ['UI/UX Design', 'Accessibility']
+    skills: ['UI/UX Design', 'Accessibility'],
   },
   {
-    name: '07',
+    name: '02',
     value: 'Quality Assurance Intern at GoGoX',
     date: 'Jun 2024 - Aug 2024',
     description: 'Automated the sanity and regression test suite of the client app.',
-    skills: ['Test Automation', 'QA']
+    skills: ['Test Automation', 'QA'],
   },
   {
-    name: '08',
+    name: '01',
     value: 'QA Automation Intern at GoGoX',
     date: 'Sep 2024 - Dec 2024',
     description:
       'Explored ways to optimise the testing process through means like parallel processing and cloud-based virtual devices.',
-    skills: ['CI/CD', 'Parallel Testing', 'Cloud Testing']
+    skills: ['CI/CD', 'Parallel Testing', 'Cloud Testing'],
   },
 ]
 
@@ -108,4 +123,514 @@ const stats = [
 const reversedStats = computed(() => {
   return [...stats].reverse()
 })
+
+// Transition progress - 0 is initial state (full width), 1 is final state (6xl width)
+const transitionProgress = ref(0)
+
+// Reference to the experience section
+const experienceSection = ref(null)
+const cardsContainer = ref(null)
+
+// Dimensions for transitions
+const fullScreenWidth = ref(window.innerWidth)
+const targetWidth = ref(1152) // 72rem (6xl)
+const initialGap = 16 // 1rem in pixels
+const finalGap = 12 // 0.75rem in pixels
+
+// Update responsive styles for different screen sizes
+const getResponsiveColumnLayout = () => {
+  // For desktop (default)
+  let columnLayout = {
+    initial: {
+      columns: '1fr 1.5fr 1fr', // Middle column 50% larger
+      count: 3,
+    },
+    final: {
+      columns: '1fr 1fr 1fr', // Equal columns
+      count: 3,
+    },
+  }
+
+  // For tablets
+  if (fullScreenWidth.value <= 1023 && fullScreenWidth.value > 639) {
+    columnLayout = {
+      initial: {
+        columns: '1fr 1.4fr', // Second column 40% larger
+        count: 2,
+      },
+      final: {
+        columns: '1fr 1fr', // Equal columns
+        count: 2,
+      },
+    }
+  }
+
+  // For mobile
+  if (fullScreenWidth.value <= 639) {
+    columnLayout = {
+      initial: {
+        columns: '1fr',
+        count: 1,
+      },
+      final: {
+        columns: '1fr',
+        count: 1,
+      },
+    }
+  }
+
+  return columnLayout
+}
+
+// Container style based on transition progress
+const containerStyle = computed(() => {
+  const progress = transitionProgress.value
+
+  // Smoothly transition container width from 100% viewport to 6xl
+  const viewportWidth = fullScreenWidth.value
+  const targetWidth6xl = Math.min(1152, viewportWidth * 0.9) // 6xl (72rem) or 90% of screen for smaller screens
+
+  // Calculate current container width (px)
+  const currentWidth = viewportWidth - progress * (viewportWidth - targetWidth6xl)
+
+  // Calculate current gap
+  const currentGap = initialGap - progress * (initialGap - finalGap)
+
+  return {
+    display: 'flex',
+    justifyContent: 'space-between',
+    gap: `${currentGap}px`,
+    width: `${currentWidth}px`,
+    maxWidth: '100%',
+    margin: '0 auto',
+    padding: '0 24px',
+    transition: 'none', // We control the transition manually with scroll
+  }
+})
+
+// Calculate background focus point based on card position
+const getBackgroundPosition = (index) => {
+  // Get responsive column layout to determine grid structure
+  const layoutInfo = getResponsiveColumnLayout()
+  const columnCount = layoutInfo.initial.count
+
+  if (columnCount === 1) {
+    // For single column layout - alternate positions
+    const positions = ['top', 'center', 'bottom']
+    return `${positions[index % 3]}`
+  } else if (columnCount === 2) {
+    // For two column layout (2 x 4 grid)
+    const col = index % 2 // 0: left, 1: right
+    const row = Math.floor(index / 2) // 0-3: row position
+
+    // Map grid position to focus point
+    const horizontalPosition = col === 0 ? 'left' : 'right'
+    let verticalPosition
+
+    if (row === 0) verticalPosition = 'top'
+    else if (row === 3) verticalPosition = 'bottom'
+    else verticalPosition = 'center'
+
+    return `${verticalPosition} ${horizontalPosition}`
+  } else {
+    // For three column layout (3 x 3 grid)
+    const col = index % 3 // 0: left, 1: middle, 2: right
+    const row = Math.floor(index / 3) // 0: top, 1: middle, 2: bottom
+
+    // Map grid position to background focus point
+    if (row === 0) {
+      // Top row
+      return col === 0 ? 'top left' : col === 1 ? 'top center' : 'top right'
+    } else if (row === 1) {
+      // Middle row
+      return col === 0 ? 'center left' : col === 1 ? 'center' : 'center right'
+    } else {
+      // Bottom row
+      return col === 0 ? 'bottom left' : col === 1 ? 'bottom center' : 'bottom right'
+    }
+  }
+}
+
+// Get number of columns based on layout
+const getNumberOfColumns = () => {
+  const layoutInfo = getResponsiveColumnLayout()
+  return layoutInfo.initial.count
+}
+
+// Get column stats (distribute stats across columns)
+const getColumnStats = (colIndex) => {
+  // Adjust column index (1-based in template, 0-based for calculations)
+  const col = colIndex - 1
+  const totalCards = reversedStats.value.length
+  const columnCount = getNumberOfColumns()
+
+  // Calculate how many cards per column (approximately)
+  const cardsPerColumn = Math.ceil(totalCards / columnCount)
+
+  // Get cards for this column
+  const startIndex = col * cardsPerColumn
+  const endIndex = Math.min(startIndex + cardsPerColumn, totalCards)
+
+  return reversedStats.value.slice(startIndex, endIndex)
+}
+
+// Get starting index for a column's cards
+const getColumnStartIndex = (colIndex) => {
+  // Adjust column index (1-based in template, 0-based for calculations)
+  const col = colIndex - 1
+  const totalCards = reversedStats.value.length
+  const columnCount = getNumberOfColumns()
+
+  // Calculate how many cards per column (approximately)
+  const cardsPerColumn = Math.ceil(totalCards / columnCount)
+
+  return col * cardsPerColumn
+}
+
+// Get column style based on index
+const getColumnStyle = (colIndex) => {
+  const progress = transitionProgress.value
+
+  // Adjust column index (1-based in template, 0-based for calculations)
+  const col = colIndex - 1
+
+  // Calculate column width based on layout and progress
+  const layoutInfo = getResponsiveColumnLayout()
+  const columnCount = layoutInfo.initial.count
+
+  // Available width at current progress
+  // Start at 100% of viewport and decrease to target width
+  const viewportWidth = fullScreenWidth.value - 48 // Account for container padding
+  const targetWidth6xl = Math.min(1152, fullScreenWidth.value * 0.9) // Target 6xl width or 90% of screen
+  const availableWidth = viewportWidth - progress * (viewportWidth - targetWidth6xl)
+
+  // Column widths percentages (relative to availableWidth)
+  let widthPercent = 0
+
+  if (columnCount === 1) {
+    // Single column
+    widthPercent = 100
+  } else if (columnCount === 2) {
+    // Two columns with ratio 1:1.4
+    const totalParts = 2.4 // 1 + 1.4
+    if (col === 0) {
+      // First column (smaller - 1 part)
+      const initialPercent = (1 / totalParts) * 100
+      const finalPercent = 50 // Equal columns at end
+      widthPercent = initialPercent + progress * (finalPercent - initialPercent)
+    } else {
+      // Second column (larger - 1.4 parts)
+      const initialPercent = (1.4 / totalParts) * 100
+      const finalPercent = 50 // Equal columns at end
+      widthPercent = initialPercent + progress * (finalPercent - initialPercent)
+    }
+  } else {
+    // Three columns with ratio 1:1.5:1
+    const totalParts = 3.5 // 1 + 1.5 + 1
+    if (col === 1) {
+      // Middle column (larger - 1.5 parts)
+      const initialPercent = (1.5 / totalParts) * 100
+      const finalPercent = 33.33 // Equal columns at end
+      widthPercent = initialPercent + progress * (finalPercent - initialPercent)
+    } else {
+      // Side columns (smaller - 1 part each)
+      const initialPercent = (1 / totalParts) * 100
+      const finalPercent = 33.33 // Equal columns at end
+      widthPercent = initialPercent + progress * (finalPercent - initialPercent)
+    }
+  }
+
+  // Calculate current gap
+  const currentGap = initialGap - progress * (initialGap - finalGap)
+
+  return {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: `${currentGap}px`,
+    width: `${widthPercent}%`,
+    transition: 'none', // Controlled by scroll
+  }
+}
+
+const getCardStyle = (index) => {
+  const progress = transitionProgress.value
+
+  // Get responsive column layout to adjust initial square size
+  const layoutInfo = getResponsiveColumnLayout()
+  const columnCount = layoutInfo.initial.count
+
+  // Square to rectangle transition
+  // We use fixed 220px height for final rectangle state
+  const finalCardHeight = 220
+
+  // Figure out which column this card belongs to (0, 1, or 2)
+  const currentColumn = index % columnCount
+
+  // Calculate initial width based on column
+  let initialWidth
+  const viewportWidth = fullScreenWidth.value - 48 - (columnCount - 1) * initialGap // Account for container padding and gaps
+
+  if (columnCount === 1) {
+    // Single column - use full available width
+    initialWidth = viewportWidth
+  } else if (columnCount === 2) {
+    // Two columns
+    // For first column (smaller)
+    const col1Width = viewportWidth / 2.4 // Sized for 1:1.4 ratio
+    // For second column (larger - 1.4x)
+    const col2Width = (viewportWidth / 2.4) * 1.4
+
+    initialWidth = currentColumn === 0 ? col1Width : col2Width
+  } else {
+    // Three columns
+    // For side columns (smaller)
+    const sideColWidth = viewportWidth / 3.5
+    // For middle column (larger - 1.5x)
+    const middleColWidth = (viewportWidth / 3.5) * 1.5
+
+    initialWidth = currentColumn === 1 ? middleColWidth : sideColWidth
+  }
+
+  // Make the card height equal to its width initially for square appearance
+  const initialSquareSize = initialWidth
+
+  // Calculate final width based on 6xl container and column count
+  const finalContainerWidth = targetWidth.value - 48 // Account for padding
+  const finalGapTotal = finalGap * (columnCount - 1)
+  let finalColumnWidth
+
+  if (columnCount === 1) {
+    finalColumnWidth = finalContainerWidth
+  } else if (columnCount === 2) {
+    finalColumnWidth = (finalContainerWidth - finalGapTotal) / 2
+  } else {
+    finalColumnWidth = (finalContainerWidth - finalGapTotal) / 3
+  }
+
+  // Interpolate height from square to rectangle
+  const currentHeight = initialSquareSize - progress * (initialSquareSize - finalCardHeight)
+
+  // Calculate column width at current progress point
+  let currentColumnWidthPercent
+  if (columnCount === 1) {
+    currentColumnWidthPercent = 100
+  } else if (columnCount === 2) {
+    if (currentColumn === 0) {
+      // First column transitions from ~41.7% to 50%
+      currentColumnWidthPercent = 100 / 2.4 + progress * (50 - 100 / 2.4)
+    } else {
+      // Second column transitions from ~58.3% to 50%
+      currentColumnWidthPercent = (100 / 2.4) * 1.4 - progress * ((100 / 2.4) * 1.4 - 50)
+    }
+  } else {
+    if (currentColumn === 1) {
+      // Middle column transitions from ~43% to 33.3%
+      currentColumnWidthPercent = (100 / 3.5) * 1.5 - progress * ((100 / 3.5) * 1.5 - 33.3)
+    } else {
+      // Side columns transition from ~28.6% to 33.3%
+      currentColumnWidthPercent = 100 / 3.5 + progress * (33.3 - 100 / 3.5)
+    }
+  }
+
+  // Calculate actual column width at current progress
+  const currentColumnWidth =
+    (viewportWidth - (columnCount - 1) * (initialGap - progress * (initialGap - finalGap))) *
+    (currentColumnWidthPercent / 100)
+
+  // Background zoom interpolation
+  const startZoom = 120 // Initial zoom percentage
+  const endZoom = 140 // Final zoom percentage
+  const currentZoom = startZoom + progress * (endZoom - startZoom)
+
+  // Background position interpolation
+  const startPosition = 'center'
+  const endPosition = getBackgroundPosition(index)
+  const currentPosition = progress >= 0.8 ? endPosition : startPosition
+
+  return {
+    height: `${currentHeight}px`,
+    width: `100%`, // Take up full column width
+    backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('/exp-${(index % 8) + 1}.png')`,
+    backgroundSize: `${currentZoom}%`,
+    backgroundPosition: currentPosition,
+    transform: `translateZ(${-50 + progress * 50}px)`, // Start at -50px, end at 0
+    display: 'flex',
+    flexDirection: 'column',
+    padding: '1.5rem',
+    border: '1px solid #df97c0',
+    borderRadius: '0.5rem',
+    overflow: 'hidden',
+    position: 'relative',
+    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
+    transition: 'none', // We control the transition manually with scroll
+  }
+}
+
+// Update transition progress based on scroll position
+const updateTransitionProgress = () => {
+  if (!experienceSection.value) return
+
+  const rect = experienceSection.value.getBoundingClientRect()
+  const windowHeight = window.innerHeight
+
+  // Calculate when second row enters viewport
+  // Estimate first row height (for large screens about 300-400px)
+  const firstRowHeight = Math.min(fullScreenWidth.value * 0.3, 400) // Limit to reasonable size
+  const sectionTopPadding = 64 // py-16 is about 64px
+
+  // Start when second row first enters viewport
+  const startPoint = windowHeight - sectionTopPadding - firstRowHeight
+
+  // Transition over longer distance for gradual effect (600px of scrolling)
+  const endPoint = startPoint - 600
+
+  // Debug - log transition points once when component mounts
+  if (debugOnce.value) {
+    console.log(`Window height: ${windowHeight}px`)
+    console.log(`First row height: ${firstRowHeight}px`)
+    console.log(`Transition starts at section top: ${startPoint}px`)
+    console.log(`Transition ends at section top: ${endPoint}px`)
+    debugOnce.value = false
+  }
+
+  if (rect.top <= startPoint && rect.top >= endPoint) {
+    // Calculate progress (0 at start, 1 at end)
+    const rawProgress = (startPoint - rect.top) / (startPoint - endPoint)
+
+    // Apply easing function for smoother transition
+    // Use cubic ease-out for slower start, faster finish
+    const easedProgress = 1 - Math.pow(1 - Math.max(0, Math.min(1, rawProgress)), 3)
+    transitionProgress.value = easedProgress
+
+    // Debug - log section position and progress occasionally
+    if (Math.round(rawProgress * 100) % 25 === 0) {
+      console.log(
+        `Section top: ${Math.round(rect.top)}px, Progress: ${Math.round(easedProgress * 100)}%`,
+      )
+    }
+  } else if (rect.top > startPoint) {
+    // Section hasn't entered the transition zone
+    transitionProgress.value = 0
+  } else if (rect.top < endPoint) {
+    // Section has passed the transition zone
+    transitionProgress.value = 1
+  }
+
+  // Update window width measurement in case of window resize
+  fullScreenWidth.value = window.innerWidth
+}
+
+// Handle window resize
+const handleResize = () => {
+  fullScreenWidth.value = window.innerWidth
+  // Update target width for 6xl
+  targetWidth.value = Math.min(1152, window.innerWidth * 0.9) // 72rem or 90% of window width
+}
+
+// Set up event listeners
+onMounted(() => {
+  window.addEventListener('scroll', updateTransitionProgress, { passive: true })
+  window.addEventListener('resize', handleResize, { passive: true })
+
+  // Calculate initial values
+  handleResize()
+  updateTransitionProgress()
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', updateTransitionProgress)
+  window.removeEventListener('resize', handleResize)
+})
 </script>
+
+<style scoped>
+.cards-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: visible; /* Allow cards to extend full width */
+  perspective: 1000px;
+}
+
+.columns-container {
+  display: flex;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card item styling */
+.card-item {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+  transition: transform 0.2s ease;
+}
+
+/* Add a pseudo-element for depth */
+.card-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Add floating animation for cards when scrolled into view */
+@keyframes floatEffect {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* When fully scrolled in, add floating animation */
+.card-item {
+  animation: floatEffect 6s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.card-item[style*='translateZ(0px)'] {
+  animation-play-state: running;
+}
+
+/* Stagger animation delays */
+.column:nth-child(1) .card-item:nth-child(1) {
+  animation-delay: 0s;
+}
+.column:nth-child(1) .card-item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.column:nth-child(1) .card-item:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.column:nth-child(2) .card-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.column:nth-child(2) .card-item:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.column:nth-child(2) .card-item:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.column:nth-child(3) .card-item:nth-child(1) {
+  animation-delay: 0.3s;
+}
+.column:nth-child(3) .card-item:nth-child(2) {
+  animation-delay: 0.7s;
+}
+.column:nth-child(3) .card-item:nth-child(3) {
+  animation-delay: 1.1s;
+}
+</style>
