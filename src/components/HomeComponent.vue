@@ -1,5 +1,8 @@
 <template>
-  <div ref="landingSection" class="overflow-hidden min-h-[100vh] bg-[#181818] bg-cover bg-center bg-no-repeat relative flex flex-col justify-center">
+  <div
+    ref="landingSection"
+    class="overflow-hidden min-h-[100vh] bg-[#181818] bg-cover bg-center bg-no-repeat relative flex flex-col justify-center"
+  >
     <div class="absolute inset-0"></div>
     <header class="absolute top-0 left-0 right-0 z-50 flex justify-center">
       <nav class="items-center gap-6 px-6 py-6 w-max hidden lg:flex" aria-label="Global">
@@ -16,7 +19,7 @@
         </template>
       </nav>
 
-      <!-- Mobile Hamburger Button -->
+      <!-- mobile hamburger button -->
       <div class="lg:hidden absolute top-4 right-4">
         <button
           type="button"
@@ -28,7 +31,7 @@
         </button>
       </div>
 
-      <!-- Mobile Menu Drawer -->
+      <!-- mobile menu -->
       <Dialog class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
         <div class="fixed inset-0 z-50" />
         <DialogPanel
@@ -98,7 +101,11 @@
           </div>
 
           <!-- Second heart: medium sized and positioned lower, tilted right by 10 degrees -->
-          <div ref="secondHeart" class="absolute second-heart" style="bottom: -20px; transform: rotate(10deg)">
+          <div
+            ref="secondHeart"
+            class="absolute second-heart"
+            style="bottom: -20px; transform: rotate(10deg)"
+          >
             <img src="/heart.png" alt="heart" class="w-20 h-20 sm:w-24 sm:h-24 lg:w-36 lg:h-36" />
           </div>
 
@@ -168,7 +175,7 @@ const quoteText =
   "In a world of generative AI and self-improving code, I hope to be at the forefront, engineering the next breakthrough that defines tomorrow's plot twist."
 
 onMounted(() => {
-  // Typewriter effect
+  // typewriter effect
   let i = 0
   const speed = 20 // typing speed
 
@@ -186,60 +193,57 @@ onMounted(() => {
   setTimeout(() => {
     typeWriter()
   }, 500)
-  
-  // Add scroll event listener for hearts zoom-out effect
-  // This approach will be more reliable than Intersection Observer for this specific effect
+
+  // scroll event listener for hearts zoom-out effect
   let lastScrollY = window.scrollY
-  
+
   const handleScroll = () => {
     const currentScrollY = window.scrollY
-    
-    // Check if user is scrolling down and has scrolled past a threshold
+
+    // check if user is scrolling down and has scrolled past a threshold
     if (currentScrollY > lastScrollY && currentScrollY > 100 && !heartsAnimated.value) {
       console.log('Scrolling down, triggering heart animations!')
       heartsAnimated.value = true
-      
-      // First heart zooms out to top-left
+
+      // first heart
       if (firstHeart.value) {
         firstHeart.value.classList.add('heart-zoom-out-left')
       }
-      
-      // Second heart zooms out to bottom
+
+      // second heart
       if (secondHeart.value) {
         secondHeart.value.classList.add('heart-zoom-out-bottom')
       }
-      
-      // Third heart zooms out to top-right
+
+      // third heart
       if (thirdHeart.value) {
         thirdHeart.value.classList.add('heart-zoom-out-right')
       }
     }
-    
-    // Reset animation when scrolling back to top
+
+    // reset animation when scrolling back to top
     if (currentScrollY < 50 && heartsAnimated.value) {
       console.log('Scrolled back up, resetting heart animations!')
       heartsAnimated.value = false
-      
+
       if (firstHeart.value) {
         firstHeart.value.classList.remove('heart-zoom-out-left')
       }
-      
+
       if (secondHeart.value) {
         secondHeart.value.classList.remove('heart-zoom-out-bottom')
       }
-      
+
       if (thirdHeart.value) {
         thirdHeart.value.classList.remove('heart-zoom-out-right')
       }
     }
-    
+
     lastScrollY = currentScrollY
   }
-  
-  // Add scroll event listener with passive option for better performance
+
   window.addEventListener('scroll', handleScroll, { passive: true })
-  
-  // Clean up event listener on component unmount
+
   onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll)
   })
@@ -250,7 +254,6 @@ const scrollToSection = (e, href) => {
   const element = document.querySelector(href)
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' })
-    // Optional: Update URL without the duplicate hash
     window.history.pushState(null, '', href)
   }
 }
@@ -413,11 +416,11 @@ const scrollToSection = (e, href) => {
   .third-heart {
     animation: bounce3-md 4s ease-in-out infinite;
   }
-  
+
   .heart-zoom-out-left {
     animation: zoom-out-left-md 1s forwards !important;
   }
-  
+
   .heart-zoom-out-right {
     animation: zoom-out-right-md 1s forwards !important;
   }
@@ -443,7 +446,7 @@ const scrollToSection = (e, href) => {
       transform: translateY(-12px) translateX(120px) rotate(-12deg);
     }
   }
-  
+
   @keyframes zoom-out-left-lg {
     0% {
       opacity: 1;
@@ -473,11 +476,11 @@ const scrollToSection = (e, href) => {
   .third-heart {
     animation: bounce3-lg 4s ease-in-out infinite;
   }
-  
+
   .heart-zoom-out-left {
     animation: zoom-out-left-lg 1s forwards !important;
   }
-  
+
   .heart-zoom-out-right {
     animation: zoom-out-right-lg 1s forwards !important;
   }
