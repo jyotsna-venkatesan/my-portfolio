@@ -1,9 +1,15 @@
 <template id="experience">
-  <section id="experience" class="bg-[#181818] -translate-y-4" ref="experienceSection">
+  <!-- Fixed bottom 35% blur effect that's only visible when experience section is in view but purple wave is not -->
+  <div
+    v-if="isSectionVisible && !isPurpleWaveVisible"
+    class="fixed bottom-0 left-0 right-0 h-[35vh] z-[999] pointer-events-none bottom-blur"
+  ></div>
+
+  <section id="experience" class="bg-[#f1f1f1] -translate-y-4 relative" ref="experienceSection">
     <div class="relative py-16 sm:py-24">
       <div class="mb-8 px-6 mx-auto max-w-6xl lg:px-8">
-        <p class="font-inter text-[35px] text-[#DF97C0]" style="text-shadow: 0 0 8px #cd348b">
-          experience
+        <p class="font-inter text-[35px] text-[#2A82CE]" style="text-shadow: 0 0 8px #94bee2">
+          my experience
         </p>
       </div>
       <div class="cards-wrapper overflow-hidden">
@@ -21,21 +27,21 @@
               :style="getCardStyle(statIndex + getColumnStartIndex(colIndex))"
             >
               <div class="flex items-start gap-x-4 mb-3">
-                <p class="font-inter font-black text-[16px] text-[#181818] shrink-0">
+                <p class="font-inter font-black text-[16px] text-[#f1f1f1] shrink-0">
                   {{ stat.name }}
                 </p>
                 <div class="flex flex-col">
-                  <p class="font-inter font-bold text-[14px] text-[#181818]">{{ stat.value }}</p>
-                  <p class="font-inter text-[12px] text-[#181818]">{{ stat.date }}</p>
+                  <p class="font-inter font-bold text-[14px] text-[#f1f1f1]">{{ stat.value }}</p>
+                  <p class="font-inter text-[12px] text-[#f1f1f1]">{{ stat.date }}</p>
                 </div>
               </div>
               <div class="mt-2">
-                <p class="font-inter text-[13px] text-[#181818] mb-2">{{ stat.description }}</p>
+                <p class="font-inter text-[13px] text-[#f1f1f1] mb-2">{{ stat.description }}</p>
                 <div class="flex flex-wrap gap-2">
                   <span
                     v-for="skill in stat.skills"
                     :key="skill"
-                    class="px-4 py-2 rounded-md bg-[#181818] border border-[#DF97C0] text-[#F1F1F1] text-[11px] font-inter"
+                    class="px-4 py-2 rounded-md bg-[#f1f1f1] border border-[#f1f1f1] text-[#181818] text-[11px] font-inter"
                   >
                     {{ skill }}
                   </span>
@@ -46,14 +52,33 @@
         </div>
       </div>
     </div>
+    <div
+      class="w-screen relative left-1/2 right-1/2 -mx-[50vw] -mb-5"
+      style="margin-left: calc(-50vw + 0px); margin-right: calc(-50vw + 0px)"
+    >
+      <img 
+        ref="purpleWaveRef" 
+        :src="purpleWave" 
+        alt="purple wave" 
+        class="w-full h-auto object-cover relative z-10" 
+      />
+    </div>
   </section>
 </template>
 
 <script setup>
-import { computed, ref, onMounted, onUnmounted, reactive } from 'vue'
+import { computed, ref, onMounted, onUnmounted } from 'vue'
+import purpleWave from '/purple-wave.png'
 
 // Debug flag to log transition points once
 const debugOnce = ref(true)
+
+// Track if section is visible for blur overlay
+const isSectionVisible = ref(false)
+
+// Track if purple wave is visible
+const isPurpleWaveVisible = ref(false)
+const purpleWaveRef = ref(null)
 
 const stats = [
   {
@@ -298,12 +323,6 @@ const getColumnStyle = (colIndex) => {
   const layoutInfo = getResponsiveColumnLayout()
   const columnCount = layoutInfo.initial.count
 
-  // Available width at current progress
-  // Start at 100% of viewport and decrease to target width
-  const viewportWidth = fullScreenWidth.value - 48 // Account for container padding
-  const targetWidth6xl = Math.min(1152, fullScreenWidth.value * 0.9) // Target 6xl width or 90% of screen
-  const availableWidth = viewportWidth - progress * (viewportWidth - targetWidth6xl)
-
   // Column widths percentages (relative to availableWidth)
   let widthPercent = 0
 
@@ -394,66 +413,66 @@ const getCardStyle = (index) => {
   // Make the card height equal to its width initially for square appearance
   const initialSquareSize = initialWidth
 
-  // Calculate final width based on 6xl container and column count
-  const finalContainerWidth = targetWidth.value - 48 // Account for padding
-  const finalGapTotal = finalGap * (columnCount - 1)
-  let finalColumnWidth
-
-  if (columnCount === 1) {
-    finalColumnWidth = finalContainerWidth
-  } else if (columnCount === 2) {
-    finalColumnWidth = (finalContainerWidth - finalGapTotal) / 2
-  } else {
-    finalColumnWidth = (finalContainerWidth - finalGapTotal) / 3
-  }
-
   // Interpolate height from square to rectangle
   const currentHeight = initialSquareSize - progress * (initialSquareSize - finalCardHeight)
 
   // Calculate column width at current progress point
-  let currentColumnWidthPercent
-  if (columnCount === 1) {
-    currentColumnWidthPercent = 100
-  } else if (columnCount === 2) {
-    if (currentColumn === 0) {
-      // First column transitions from ~41.7% to 50%
-      currentColumnWidthPercent = 100 / 2.4 + progress * (50 - 100 / 2.4)
-    } else {
-      // Second column transitions from ~58.3% to 50%
-      currentColumnWidthPercent = (100 / 2.4) * 1.4 - progress * ((100 / 2.4) * 1.4 - 50)
-    }
-  } else {
-    if (currentColumn === 1) {
-      // Middle column transitions from ~43% to 33.3%
-      currentColumnWidthPercent = (100 / 3.5) * 1.5 - progress * ((100 / 3.5) * 1.5 - 33.3)
-    } else {
-      // Side columns transition from ~28.6% to 33.3%
-      currentColumnWidthPercent = 100 / 3.5 + progress * (33.3 - 100 / 3.5)
-    }
-  }
-
-  // Calculate actual column width at current progress
-  const currentColumnWidth =
-    (viewportWidth - (columnCount - 1) * (initialGap - progress * (initialGap - finalGap))) *
-    (currentColumnWidthPercent / 100)
 
   // Background zoom interpolation
   const startZoom = 120 // Initial zoom percentage
   const endZoom = 140 // Final zoom percentage
   const currentZoom = startZoom + progress * (endZoom - startZoom)
 
-  // Background position interpolation
-  const startPosition = 'center'
-  const endPosition = getBackgroundPosition(index)
-  const currentPosition = progress >= 0.8 ? endPosition : startPosition
+  // Background position interpolation - make it gradual
+  const positions = {
+    start: 'center',
+    end: getBackgroundPosition(index),
+  }
+
+  // Parse the positions for smooth interpolation
+  const parsePosition = (posStr) => {
+    // Default to center if not specified
+    if (!posStr || posStr === 'center') return { x: 50, y: 50 }
+
+    // Parse vertical and horizontal positions
+    const [vertical, horizontal] = posStr.split(' ').map((p) => p.trim())
+
+    let x = 50,
+      y = 50 // Default center
+
+    // Parse horizontal position
+    if (horizontal) {
+      if (horizontal === 'left') x = 0
+      else if (horizontal === 'right') x = 100
+      else if (horizontal === 'center') x = 50
+    }
+
+    // Parse vertical position
+    if (vertical === 'top') y = 0
+    else if (vertical === 'bottom') y = 100
+    else if (vertical === 'center') y = 50
+
+    return { x, y }
+  }
+
+  // Parse start and end positions
+  const startPos = parsePosition(positions.start)
+  const endPos = parsePosition(positions.end)
+
+  // Interpolate between positions
+  const currentX = startPos.x + progress * (endPos.x - startPos.x)
+  const currentY = startPos.y + progress * (endPos.y - startPos.y)
+
+  // Format as CSS background-position
+  const currentPosition = `${currentY}% ${currentX}%`
 
   return {
     height: `${currentHeight}px`,
     width: `100%`, // Take up full column width
-    backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('/exp-${(index % 8) + 1}.png')`,
+    backgroundImage: `linear-gradient(rgba(20, 20, 20, 0.4), rgba(9, 9, 9, 0.55)), url('/exp-${(index % 8) + 1}.png')`,
     backgroundSize: `${currentZoom}%`,
     backgroundPosition: currentPosition,
-    transform: `translateZ(${-50 + progress * 50}px)`, // Start at -50px, end at 0
+    transform: `translateZ(${-50 + progress * 50}px)`,
     display: 'flex',
     flexDirection: 'column',
     padding: '1.5rem',
@@ -462,7 +481,9 @@ const getCardStyle = (index) => {
     overflow: 'hidden',
     position: 'relative',
     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
-    transition: 'none', // We control the transition manually with scroll
+    transition: 'background-position 0.5s ease-out', // Add smooth transition for background position
+    backfaceVisibility: 'hidden', // Prevent flickering during transform
+    willChange: 'transform, height, background-position', // Optimize for animations
   }
 }
 
@@ -472,6 +493,33 @@ const updateTransitionProgress = () => {
 
   const rect = experienceSection.value.getBoundingClientRect()
   const windowHeight = window.innerHeight
+
+  // Check if any part of the section is visible in the viewport
+  // We consider it visible if either:
+  // 1. The top is above the bottom of viewport AND bottom is below the top of viewport
+  // 2. The section is larger than viewport and completely encompasses it
+  const isVisible =
+    (rect.top < windowHeight && rect.bottom > 0) || (rect.top <= 0 && rect.bottom >= windowHeight)
+
+  // Update section visibility
+  isSectionVisible.value = isVisible
+  
+  // Check if purple wave is visible
+  if (purpleWaveRef.value && isVisible) {
+    const waveRect = purpleWaveRef.value.getBoundingClientRect();
+    // Wave is considered completely visible when its top and bottom are both in the viewport
+    const waveIsCompletelyVisible = waveRect.top >= 0 && waveRect.bottom <= windowHeight;
+    
+    // Only log when visibility changes
+    if (waveIsCompletelyVisible !== isPurpleWaveVisible.value) {
+      isPurpleWaveVisible.value = waveIsCompletelyVisible;
+      console.log(`Purple wave completely visible: ${waveIsCompletelyVisible}`);
+    } else {
+      isPurpleWaveVisible.value = waveIsCompletelyVisible;
+    }
+  } else {
+    isPurpleWaveVisible.value = false;
+  }
 
   // Calculate when second row enters viewport
   // Estimate first row height (for large screens about 300-400px)
@@ -535,6 +583,12 @@ onMounted(() => {
   // Calculate initial values
   handleResize()
   updateTransitionProgress()
+
+  // Initialize section visibility
+  if (experienceSection.value) {
+    const rect = experienceSection.value.getBoundingClientRect()
+    isSectionVisible.value = rect.top < window.innerHeight && rect.bottom > 0
+  }
 })
 
 onUnmounted(() => {
@@ -566,7 +620,10 @@ onUnmounted(() => {
   position: relative;
   width: 100%;
   margin-bottom: 16px;
-  transition: transform 0.2s ease;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.2s ease,
+    background-position 0.5s ease-out;
 }
 
 /* Add a pseudo-element for depth */
@@ -578,18 +635,48 @@ onUnmounted(() => {
   right: 0;
   bottom: 0;
   background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
   z-index: -1;
   pointer-events: none;
 }
 
+/* Bottom blur gradient effect with stronger blur */
+.bottom-blur {
+  /* No background color or gradient - completely transparent */
+  background: transparent;
+  /* No border */
+  border: none;
+  /* No shadow */
+  box-shadow: none;
+  /* Custom mask to create blur gradient */
+  mask-image: linear-gradient(to bottom, transparent, black);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black);
+  /* Apply much stronger blur */
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not ((backdrop-filter: blur(25px)) or (-webkit-backdrop-filter: blur(25px))) {
+  .bottom-blur {
+    background: linear-gradient(
+      to bottom,
+      rgba(241, 241, 241, 0) 0%,
+      rgba(241, 241, 241, 0.5) 50%,
+      rgba(241, 241, 241, 0.9) 100%
+    );
+  }
+}
+
+/* Start of animations */
 /* Add floating animation for cards when scrolled into view */
 @keyframes floatEffect {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(0) translateZ(0);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-5px) translateZ(0);
   }
 }
 
