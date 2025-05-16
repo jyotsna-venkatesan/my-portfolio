@@ -1,12 +1,11 @@
 <template id="experience">
-  <!-- Fixed bottom 35% blur effect that's only visible when experience section is in view but purple wave is not -->
   <div
-    v-if="isSectionVisible && !isPurpleWaveVisible"
+    v-if="isSectionVisible && !isPurpleWaveVisible && !isNextSectionVisible"
     class="fixed bottom-0 left-0 right-0 h-[35vh] z-[999] pointer-events-none bottom-blur"
   ></div>
 
-  <section id="experience" class="bg-[#f1f1f1] -translate-y-4 relative" ref="experienceSection">
-    <div class="relative py-16 sm:py-24">
+  <section id="experience" class="bg-[#f1f1f1] relative" ref="experienceSection">
+    <div class="relative">
       <div class="mb-8 px-6 mx-auto max-w-6xl lg:px-8">
         <p class="font-inter text-[35px] text-[#2A82CE]" style="text-shadow: 0 0 8px #94bee2">
           my experience
@@ -56,11 +55,11 @@
       class="w-screen relative left-1/2 right-1/2 -mx-[50vw] -mb-5"
       style="margin-left: calc(-50vw + 0px); margin-right: calc(-50vw + 0px)"
     >
-      <img 
-        ref="purpleWaveRef" 
-        :src="purpleWave" 
-        alt="purple wave" 
-        class="w-full h-auto object-cover relative z-10" 
+      <img
+        ref="purpleWaveRef"
+        :src="purpleWave"
+        alt="purple wave"
+        class="w-full h-auto object-cover relative z-10"
       />
     </div>
   </section>
@@ -79,6 +78,9 @@ const isSectionVisible = ref(false)
 // Track if purple wave is visible
 const isPurpleWaveVisible = ref(false)
 const purpleWaveRef = ref(null)
+
+// Track if the next section (projects) is visible
+const isNextSectionVisible = ref(false)
 
 const stats = [
   {
@@ -140,7 +142,7 @@ const stats = [
     date: 'Sep 2024 - Dec 2024',
     description:
       'Explored ways to optimise the testing process through means like parallel processing and cloud-based virtual devices.',
-    skills: ['CI/CD', 'Parallel Testing', 'Cloud Testing'],
+    skills: ['Parallel Testing', 'Cloud Testing'],
   },
 ]
 
@@ -503,22 +505,35 @@ const updateTransitionProgress = () => {
 
   // Update section visibility
   isSectionVisible.value = isVisible
-  
+
   // Check if purple wave is visible
   if (purpleWaveRef.value && isVisible) {
-    const waveRect = purpleWaveRef.value.getBoundingClientRect();
+    const waveRect = purpleWaveRef.value.getBoundingClientRect()
     // Wave is considered completely visible when its top and bottom are both in the viewport
-    const waveIsCompletelyVisible = waveRect.top >= 0 && waveRect.bottom <= windowHeight;
-    
+    const waveIsCompletelyVisible = waveRect.top >= 0 && waveRect.bottom <= windowHeight
+
     // Only log when visibility changes
     if (waveIsCompletelyVisible !== isPurpleWaveVisible.value) {
-      isPurpleWaveVisible.value = waveIsCompletelyVisible;
-      console.log(`Purple wave completely visible: ${waveIsCompletelyVisible}`);
+      isPurpleWaveVisible.value = waveIsCompletelyVisible
+      console.log(`Purple wave completely visible: ${waveIsCompletelyVisible}`)
     } else {
-      isPurpleWaveVisible.value = waveIsCompletelyVisible;
+      isPurpleWaveVisible.value = waveIsCompletelyVisible
     }
   } else {
-    isPurpleWaveVisible.value = false;
+    isPurpleWaveVisible.value = false
+  }
+
+  // Check if the next section (projects) is visible
+  const projectsSection = document.querySelector('#projects')
+  if (projectsSection) {
+    const projectsRect = projectsSection.getBoundingClientRect()
+    isNextSectionVisible.value = projectsRect.top < windowHeight && projectsRect.top >= 0
+
+    if (isNextSectionVisible.value) {
+      console.log('Projects section is now visible')
+    }
+  } else {
+    isNextSectionVisible.value = false
   }
 
   // Calculate when second row enters viewport
