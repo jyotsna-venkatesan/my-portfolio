@@ -121,7 +121,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 const navigation = [
   { name: 'about me', href: '#about' },
   { name: 'my technical background', href: '#tech' },
-  { name: 'my projects', href: '#projects' },
+  { name: 'my favorite projects', href: '#projects' },
+  { name: 'other projects', href: '#other-projects' },
   { name: 'my experience', href: '#experience' },
   { name: 'side quests', href: '#side-quests' },
   { name: 'contact me!', href: '#contact' },

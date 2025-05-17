@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 
 const sideQuests = [
   {
@@ -21,86 +21,88 @@ const sideQuests = [
 ]
 
 // Ref for the section
-const experienceSection = ref(null);
+const experienceSection = ref(null)
 // Ref for the introduction block
-const introBlock = ref(null);
+const introBlock = ref(null)
 // Create an array of refs for quest items
-const questItems = ref([]);
+const questItems = ref([])
 
 onMounted(() => {
   // Initialize refs array with enough elements
-  questItems.value = Array(sideQuests.length).fill().map(() => ref(null));
-  
+  questItems.value = Array(sideQuests.length)
+    .fill()
+    .map(() => ref(null))
+
   // Get all quest item elements after they're rendered
-  const questElements = document.querySelectorAll('.quest-item');
-  
+  const questElements = document.querySelectorAll('.quest-item')
+
   // Apply initial styles to intro block
   if (introBlock.value) {
-    introBlock.value.style.opacity = "0";
-    introBlock.value.style.transform = "translateY(20px)";
-    introBlock.value.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+    introBlock.value.style.opacity = '0'
+    introBlock.value.style.transform = 'translateY(20px)'
+    introBlock.value.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out'
   }
-  
+
   // Apply initial styles to all quest items
-  questElements.forEach(element => {
-    element.style.opacity = "0";
-    element.style.transform = "translateY(30px)";
-    element.style.transition = "opacity 0.5s ease-out, transform 0.5s ease-out";
-  });
-  
+  questElements.forEach((element) => {
+    element.style.opacity = '0'
+    element.style.transform = 'translateY(30px)'
+    element.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out'
+  })
+
   // Set up Intersection Observer
   const observerOptions = {
     root: null, // viewport is the root
-    rootMargin: "0px",
-    threshold: 0.1 // 10% of the item needs to be visible
-  };
-  
+    rootMargin: '0px',
+    threshold: 0.1, // 10% of the item needs to be visible
+  }
+
   // Observer for intro block
   const introObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        introObserver.unobserve(entry.target);
+        entry.target.style.opacity = '1'
+        entry.target.style.transform = 'translateY(0)'
+        introObserver.unobserve(entry.target)
       }
-    });
-  }, observerOptions);
-  
+    })
+  }, observerOptions)
+
   // Observer for quest items
   const questObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         // Calculate the delay based on the item's index
-        const index = parseInt(entry.target.dataset.index);
-        const delay = 0.15 * index; // 150ms delay between each item
-        
+        const index = parseInt(entry.target.dataset.index)
+        const delay = 0.15 * index // 150ms delay between each item
+
         // Apply the delay programmatically
-        entry.target.style.transitionDelay = `${delay}s`;
-        
+        entry.target.style.transitionDelay = `${delay}s`
+
         // Animate the item
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        
+        entry.target.style.opacity = '1'
+        entry.target.style.transform = 'translateY(0)'
+
         // Stop observing after animation
-        questObserver.unobserve(entry.target);
+        questObserver.unobserve(entry.target)
       }
-    });
-  }, observerOptions);
-  
+    })
+  }, observerOptions)
+
   // Start observing intro block
   if (introBlock.value) {
-    introObserver.observe(introBlock.value);
+    introObserver.observe(introBlock.value)
   }
-  
+
   // Start observing each quest item
-  questElements.forEach(item => {
-    questObserver.observe(item);
-  });
-});
+  questElements.forEach((item) => {
+    questObserver.observe(item)
+  })
+})
 </script>
 
 <template>
-  <section id="experience" class="bg-[#ebebeb] relative pt-0 mt-0 pb-16" ref="experienceSection">
+  <section id="side-quests" class="bg-[#ebebeb] relative pt-0 mt-0 pb-16" ref="experienceSection">
     <div class="relative">
       <div class="px-6 mx-auto max-w-6xl lg:px-8">
         <div class="flex flex-col md:flex-row md:items-start py-10">
@@ -131,9 +133,9 @@ onMounted(() => {
 
               <!-- Timeline section -->
               <ul role="list" class="space-y-6 mt-8 text-left">
-                <li 
-                  v-for="(quest, idx) in sideQuests" 
-                  :key="idx" 
+                <li
+                  v-for="(quest, idx) in sideQuests"
+                  :key="idx"
                   class="relative flex gap-x-4 quest-item"
                   :data-index="idx"
                 >
@@ -144,7 +146,9 @@ onMounted(() => {
                       'absolute left-0 top-0 flex w-6 justify-center',
                     ]"
                   >
-                    <div class="w-[2px] bg-gradient-to-b from-transparent via-[#FF0000] to-transparent" />
+                    <div
+                      class="w-[2px] bg-gradient-to-b from-transparent via-[#FF0000] to-transparent"
+                    />
                   </div>
 
                   <!-- Timeline dot -->
