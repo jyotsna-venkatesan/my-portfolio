@@ -8,7 +8,7 @@
         <!-- Heading and combined content section -->
         <div class="relative px-4 md:px-14" ref="imageContainer">
           <p
-            class="font-inter font-semibold text-[25px] md:text-[65px] text-[#E63104] text-center md:text-left mb-6"
+            class="font-inter font-semibold text-[25px] md:text-[45px] text-[#030303] text-center md:text-left mb-6"
           >
             about me
           </p>
@@ -23,7 +23,7 @@
           </div>
         </div>
         <!-- Text section -->
-        <div class="lg:max-w-9xl">
+        <div class="lg:max-w-9xl lg:mt-16">
           <blockquote
             class="font-inter text-right text-[14px] lg:text-[14px] text-[#F1F1F1] py-4 relative"
             ref="paragraphsContainer"
@@ -125,7 +125,6 @@
 </style>
 
 <script setup>
-import wave from '/wave-divider.png'
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 
 // References and state for the spinning star
@@ -146,7 +145,6 @@ const handleScroll = () => {
   if (!aboutSection || !imageContainer.value) return
 
   const containerRect = imageContainer.value.getBoundingClientRect()
-  const aboutRect = aboutSection.getBoundingClientRect()
 
   // Calculate the maximum scroll distance
   if (maxScrollDistance.value === 0) {

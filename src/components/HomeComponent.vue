@@ -112,13 +112,13 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref } from 'vue'
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { Bars3Icon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const navigation = [
   { name: 'about me', href: '#about' },
-  { name: 'my technical background', href: '#tech-background' },
+  { name: 'my technical background', href: '#tech' },
   { name: 'my projects', href: '#projects' },
   { name: 'my experience', href: '#experience' },
   { name: 'side quests', href: '#side-quests' },
@@ -145,7 +145,7 @@ const scrollToSection = (e, sectionId) => {
 
 .vertical-line {
   width: 1px;
-  background-color: #545454;
+  background-color: #696969;
   position: relative;
   transform: scaleY(0);
   transform-origin: top;
@@ -186,7 +186,7 @@ const scrollToSection = (e, sectionId) => {
   left: -2px;
   width: 4px;
   height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
   animation: shine-effect 4s linear infinite;
   animation-delay: 1s; /* Start shine after grow animation */
 }
