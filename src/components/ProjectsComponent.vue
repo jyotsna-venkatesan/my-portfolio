@@ -258,7 +258,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, reactive } from 'vue'
+import { ref, onMounted } from 'vue'
 
 // Define project color schemes with blob colors
 const projectColors = ref([
@@ -534,7 +534,7 @@ onMounted(() => {
   window.addEventListener('resize', adjustProjectHeight)
 
   // Add enhanced floating animation to the blobs
-  document.querySelectorAll('.blob').forEach((blob, index) => {
+  document.querySelectorAll('.blob').forEach((blob) => {
     // Different animation duration for each blob to create organic movement
     // Shorter durations for more visible movement
     const duration = 12 + Math.random() * 10

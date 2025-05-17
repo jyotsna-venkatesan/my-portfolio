@@ -1,6 +1,10 @@
 <template id="tech">
-  <section class="isolate overflow-hidden bg-[#EBEBEA] pt-16 pb-0 mb-0 relative" id="tech" style="font-size: 0; margin-bottom: -1px; padding-bottom: 0;">
-    <div class="relative mx-auto max-w-7xl pt-0 px-6 lg:px-8" style="font-size: 16px;">
+  <section
+    class="isolate overflow-hidden bg-[#EBEBEA] pt-16 pb-0 mb-0 relative"
+    id="tech"
+    style="font-size: 0; margin-bottom: -1px; padding-bottom: 0"
+  >
+    <div class="relative mx-auto max-w-7xl pt-0 px-6 lg:px-8" style="font-size: 16px">
       <!-- Heading -->
       <div class="relative px-4 md:px-14" ref="imageContainer">
         <div class="flex items-center mb-8">
@@ -256,7 +260,12 @@
     </div>
     <!-- Second wave image at bottom of section -->
     <div class="wave-bottom">
-      <img src="/second wave.png" alt="Wave Background" class="w-full h-auto object-bottom object-cover" style="display: block; margin-bottom: -2px; vertical-align: bottom;" />
+      <img
+        src="/second-wave.png"
+        alt="Wave Background"
+        class="w-full h-auto object-bottom object-cover"
+        style="display: block; margin-bottom: -2px; vertical-align: bottom"
+      />
     </div>
   </section>
 </template>
