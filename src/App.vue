@@ -3,8 +3,8 @@
     <HomeComponent />
     <AboutComponent />
     <TechComponent />
-    <ExperienceComponent />
     <ProjectsComponent />
+    <ExperienceComponent />
     <ContentComponent />
     <FooterComponent />
   </div>
