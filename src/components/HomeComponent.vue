@@ -152,6 +152,7 @@ const scrollToSection = (e, sectionId) => {
   transform: scaleY(0);
   transform-origin: top;
   opacity: 0.7;
+  overflow: hidden; /* Contains the shine effect */
 }
 
 .line-animate-1 {
@@ -185,34 +186,70 @@ const scrollToSection = (e, sectionId) => {
   content: '';
   position: absolute;
   top: -100%;
-  left: -2px;
-  width: 4px;
-  height: 100%;
+  left: 0;
+  width: 100%;
+  height: 25px; /* Fixed height for shine effect */
   background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
-  animation: shine-effect 4s linear infinite;
-  animation-delay: 1s; /* Start shine after grow animation */
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Line-specific shine animations */
+.line-animate-1::after {
+  animation-name: shine-effect-1;
+  animation-delay: 1s;
 }
 
 .line-animate-2::after {
+  animation-name: shine-effect-2;
   animation-delay: 2s;
 }
 
 .line-animate-3::after {
+  animation-name: shine-effect-3;
   animation-delay: 3s;
 }
 
 .line-animate-4::after {
+  animation-name: shine-effect-4;
   animation-delay: 4s;
 }
 
-/* Shine animation */
-@keyframes shine-effect {
+/* Specific animations for each line type to ensure precise control */
+@keyframes shine-effect-1 {
   0% {
-    top: -100%;
+    top: -25px;
   }
-  20%,
   100% {
-    top: 200%;
+    top: calc(50vh); /* Full height of tall lines */
+  }
+}
+
+@keyframes shine-effect-2 {
+  0% {
+    top: -25px;
+  }
+  100% {
+    top: calc(28vh - 25px); /* Exactly the height of shorter lines */
+  }
+}
+
+@keyframes shine-effect-3 {
+  0% {
+    top: -25px;
+  }
+  100% {
+    top: calc(28vh - 25px); /* Exactly the height of shorter lines */
+  }
+}
+
+@keyframes shine-effect-4 {
+  0% {
+    top: -25px;
+  }
+  100% {
+    top: calc(50vh); /* Full height of tall lines */
   }
 }
 </style>
