@@ -80,6 +80,31 @@
             </div>
           </blockquote>
 
+          <!-- Download Resume Button -->
+          <div class="flex justify-end mb-8 mt-6 pr-2">
+            <a
+              href="/CV.pdf"
+              download
+              class="font-inter bg-[#E63104] hover:bg-[#e9484f] text-white py-2 px-6 rounded-md transition-colors duration-300 flex items-center shadow-md"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+              My resume
+            </a>
+          </div>
+
           <!-- Image shown only on mobile, after text -->
           <div class="flex justify-center md:hidden mt-6 mb-8">
             <img

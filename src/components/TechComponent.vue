@@ -1,6 +1,6 @@
 <template id="tech">
-  <section class="isolate overflow-hidden bg-[#EBEBEA] pt-16 pb-0 relative" id="tech">
-    <div class="relative mx-auto max-w-7xl pt-0 px-6 lg:px-8">
+  <section class="isolate overflow-hidden bg-[#EBEBEA] pt-16 pb-0 mb-0 relative" id="tech" style="font-size: 0;">
+    <div class="relative mx-auto max-w-7xl pt-0 px-6 lg:px-8" style="font-size: 16px;">
       <!-- Heading -->
       <div class="relative px-4 md:px-14" ref="imageContainer">
         <div class="flex items-center mb-8">
@@ -34,15 +34,17 @@
                   <h2 class="text-[#030303] text-[25px] font-semibold mb-2">Development</h2>
                 </div>
               </div>
-              <p class="text-[#FF0040] text-[14px] mb-4">C++, Python, Java, JavaScript</p>
+              <p class="text-[#FF0040] text-[14px] mb-4">
+                Python, Java, JavaScript, C++, TypeScript
+              </p>
               <div class="flex flex-col">
                 <span class="text-[#818181] text-[11px] mb-1">&lt;h3&gt;</span>
                 <div class="flex">
                   <div class="w-[1px] bg-[#818181] ml-3 mr-4"></div>
                   <div class="tech-content py-3">
                     <p class="text-[#818181] text-[11px]">
-                      Expertise in object-oriented programming, data structures, algorithms, and
-                      system design. Experience with C++, Python, and Java.
+                      I’m comfortable with both object-oriented and functional programming. I enjoy
+                      building small systems that just work—and scaling them when they do.
                     </p>
                   </div>
                 </div>
@@ -72,15 +74,17 @@
                   <h2 class="text-[#030303] text-[25px] font-semibold mb-2">Engineering</h2>
                 </div>
               </div>
-              <p class="text-[#FF0040] text-[14px] mb-4">HTML, CSS, JavaScript, Vue.js, React</p>
+              <p class="text-[#FF0040] text-[14px] mb-4">
+                Svelte, React, Vue.js, HTML/CSS, Three.js
+              </p>
               <div class="flex flex-col">
                 <span class="text-[#818181] text-[11px] mb-1">&lt;h3&gt;</span>
                 <div class="flex">
                   <div class="w-[1px] bg-[#818181] ml-3 mr-4"></div>
                   <div class="tech-content py-3">
                     <p class="text-[#818181] text-[11px]">
-                      Proficient in creating responsive interfaces using modern frameworks like
-                      Vue.js, React, and Angular. Strong knowledge of HTML, CSS, and JavaScript.
+                      I'm really drawn to the creative side of development. I enjoy working on
+                      responsive, interactive UIs and learning new ways to make the web feel alive.
                     </p>
                   </div>
                 </div>
@@ -110,15 +114,15 @@
                   <h2 class="text-[#030303] text-[25px] font-semibold mb-2">Flutter Dev</h2>
                 </div>
               </div>
-              <p class="text-[#FF0040] text-[14px] mb-4">Flutter, Dart, Swift, Kotlin</p>
+              <p class="text-[#FF0040] text-[14px] mb-4">Flutter, Dart, Swift</p>
               <div class="flex flex-col">
                 <span class="text-[#818181] text-[11px] mb-1">&lt;h3&gt;</span>
                 <div class="flex">
                   <div class="w-[1px] bg-[#818181] ml-3 mr-4"></div>
                   <div class="tech-content py-3">
                     <p class="text-[#818181] text-[11px]">
-                      Specialized in cross-platform mobile development using Flutter and Dart.
-                      Experience with native Android (Kotlin) and iOS (Swift) development.
+                      I've been experimenting with cross-platform mobile development— turning
+                      sketches into working apps has been a favorite kind of challenge.
                     </p>
                   </div>
                 </div>
@@ -151,15 +155,17 @@
                   <h2 class="text-[#030303] text-[25px] font-semibold mb-2">DevOps</h2>
                 </div>
               </div>
-              <p class="text-[#FF0040] text-[14px] mb-4">Node.js, Django, Docker, AWS, GCP</p>
+              <p class="text-[#FF0040] text-[14px] mb-4">
+                Node.js, Express.js, MongoDB, MySQL, Docker, GitHub Actions
+              </p>
               <div class="flex flex-col">
                 <span class="text-[#818181] text-[11px] mb-1">&lt;h3&gt;</span>
                 <div class="flex">
                   <div class="w-[1px] bg-[#818181] ml-3 mr-4"></div>
                   <div class="tech-content py-3">
                     <p class="text-[#818181] text-[11px]">
-                      Experienced in server-side development with Node.js, Django, and Spring Boot.
-                      Skilled in containerization with Docker and cloud services like AWS and GCP.
+                      I'm learning how to structure APIs, connect databases, and automate things
+                      that should never be manual.
                     </p>
                   </div>
                 </div>
@@ -190,7 +196,7 @@
                 </div>
               </div>
               <p class="text-[#FF0040] text-[14px] mb-4">
-                TensorFlow, PyTorch, scikit-learn, Python
+                TensorFlow, PyTorch, scikit-learn, NumPy, Pandas
               </p>
               <div class="flex flex-col">
                 <span class="text-[#818181] text-[11px] mb-1">&lt;h3&gt;</span>
@@ -198,8 +204,8 @@
                   <div class="w-[1px] bg-[#818181] ml-3 mr-4"></div>
                   <div class="tech-content py-3">
                     <p class="text-[#818181] text-[11px]">
-                      Knowledge of machine learning algorithms, deep learning, and data analysis.
-                      Experience with TensorFlow, PyTorch, and scikit-learn for model development.
+                      Still early in my ML journey, but I’ve built a few models and enjoyed working
+                      with real data. I like the mix of math, code, and creative problem solving.
                     </p>
                   </div>
                 </div>
@@ -229,17 +235,15 @@
                   <h2 class="text-[#030303] text-[25px] font-semibold mb-2">Automation</h2>
                 </div>
               </div>
-              <p class="text-[#FF0040] text-[14px] mb-4">
-                Jest, Cypress, Selenium, Jenkins, GitHub Actions
-              </p>
+              <p class="text-[#FF0040] text-[14px] mb-4">Selenium, Appium, JUnit, TestNG</p>
               <div class="flex flex-col">
                 <span class="text-[#818181] text-[11px] mb-1">&lt;h3&gt;</span>
                 <div class="flex">
                   <div class="w-[1px] bg-[#818181] ml-3 mr-4"></div>
                   <div class="tech-content py-3">
                     <p class="text-[#818181] text-[11px]">
-                      Experienced in unit testing, integration testing, and end-to-end testing.
-                      Proficient with tools like Jest, Cypress, Selenium, and CI/CD pipelines.
+                      I’ve seen how good testing saves time and sanity. I’m learning to write
+                      smarter tests and build small automations that keep projects on track.
                     </p>
                   </div>
                 </div>
@@ -252,12 +256,7 @@
     </div>
     <!-- Second wave image at bottom of section -->
     <div class="wave-bottom">
-      <img
-        src="/second wave.png"
-        alt="Wave Background"
-        class="w-full h-auto"
-        style="display: block"
-      />
+      <img src="/second wave.png" alt="Wave Background" class="w-full h-auto object-bottom object-cover" style="display: block; margin-bottom: -1px;" />
     </div>
   </section>
 </template>
@@ -291,6 +290,8 @@
   display: block;
   line-height: 0;
   z-index: 2;
+  font-size: 0; /* Eliminates any potential whitespace */
+  overflow: hidden; /* Prevents any unexpected overflow */
 }
 
 /* Animation styles */

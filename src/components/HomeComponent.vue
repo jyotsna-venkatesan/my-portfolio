@@ -95,7 +95,9 @@
     <!-- landing content -->
     <div class="relative w-full flex flex-col items-center mt-16 lg:mt-32">
       <div class="px-6 lg:px-12 mt-4 lg:mt-20 z-20 relative">
-        <p class="text-[14px] font-inter text-[#FD5B62] text-center lg:text-[14px] bg-[#030303]">
+        <p
+          class="text-[14px] font-inter text-[#FD5B62] text-center lg:text-[14px] bg-[#030303] p-4"
+        >
           Penultimate CS Student @ HK PolyU
         </p>
       </div>
