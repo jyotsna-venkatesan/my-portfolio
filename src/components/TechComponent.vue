@@ -1,5 +1,5 @@
 <template id="tech">
-  <section class="isolate overflow-hidden bg-[#EBEBEA] pt-16 pb-0 mb-0 relative" id="tech" style="font-size: 0;">
+  <section class="isolate overflow-hidden bg-[#EBEBEA] pt-16 pb-0 mb-0 relative" id="tech" style="font-size: 0; margin-bottom: -1px; padding-bottom: 0;">
     <div class="relative mx-auto max-w-7xl pt-0 px-6 lg:px-8" style="font-size: 16px;">
       <!-- Heading -->
       <div class="relative px-4 md:px-14" ref="imageContainer">
@@ -256,7 +256,7 @@
     </div>
     <!-- Second wave image at bottom of section -->
     <div class="wave-bottom">
-      <img src="/second wave.png" alt="Wave Background" class="w-full h-auto object-bottom object-cover" style="display: block; margin-bottom: -1px;" />
+      <img src="/second wave.png" alt="Wave Background" class="w-full h-auto object-bottom object-cover" style="display: block; margin-bottom: -2px; vertical-align: bottom;" />
     </div>
   </section>
 </template>
@@ -292,6 +292,8 @@
   z-index: 2;
   font-size: 0; /* Eliminates any potential whitespace */
   overflow: hidden; /* Prevents any unexpected overflow */
+  margin-bottom: -2px; /* Ensure overlap with the next section */
+  padding-bottom: 0;
 }
 
 /* Animation styles */

@@ -553,6 +553,7 @@ onMounted(() => {
   min-height: 100vh;
   overflow-x: hidden;
   z-index: 1; /* Ensure it's above previous sections */
+  margin-top: -1px; /* Fix gap between wave and projects section */
 }
 
 /* Blob styling */
