@@ -1,13 +1,7 @@
 <template>
   <div v-if="isLoading" class="loading-overlay">
     <div class="loading-content">
-      <div class="loader">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
-      <p class="loading-text text-[14px] font-inter">Gimme a second :)</p>
+      <p class="loading-text text-[14px] font-inter">Making it look presentable...</p>
       <div class="loading-progress-container">
         <div class="loading-progress-bar" :style="{ width: progress + '%' }"></div>
       </div>
@@ -80,34 +74,8 @@ watch(
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   max-width: 90%;
-}
-
-.loader {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #fd5b62;
-  animation: bounce 1.4s infinite ease-in-out both;
-}
-
-.circle:nth-child(1) {
-  animation-delay: -0.32s;
-}
-
-.circle:nth-child(2) {
-  animation-delay: -0.16s;
-}
-
-.circle:nth-child(4) {
-  animation-delay: 0.16s;
 }
 
 .loading-text {
@@ -118,28 +86,49 @@ watch(
 }
 
 .loading-progress-container {
+  position: relative;
   width: 250px;
-  height: 6px;
+  height: 3px;
   background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
 }
 
+/* Base progress bar with subtle glow */
 .loading-progress-bar {
+  position: relative;
   height: 100%;
   background-color: #fd5b62;
-  border-radius: 3px;
+  border-radius: 2px;
   transition: width 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 0 6px 0 rgba(253, 91, 98, 0.6);
 }
 
-@keyframes bounce {
-  0%,
-  80%,
-  100% {
-    transform: scale(0);
+/* The shine effect */
+.loading-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50px;
+  width: 20px; /* Slightly smaller shine width for thinner bar */
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0)
+  );
+  animation: progress-shine 4s linear infinite;
+  box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.5); /* Reduced shadow for thinner bar */
+}
+
+@keyframes progress-shine {
+  0% {
+    left: -25px;
   }
-  40% {
-    transform: scale(1);
+  100% {
+    left: calc(100% + 25px);
   }
 }
 
@@ -150,11 +139,6 @@ watch(
 
   .loading-progress-container {
     width: 200px;
-  }
-
-  .circle {
-    width: 15px;
-    height: 15px;
   }
 }
 </style>
