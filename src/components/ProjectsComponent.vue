@@ -138,7 +138,7 @@
               <a href="https://github.com/jyotsna-venkatesan/vexos" class="project-link"
                 >Go to GitHub →</a
               >
-              <a href="www.vexos.space" class="project-link">Check it out →</a>
+              <a href="https://www.vexos.space/" class="project-link">Check it out →</a>
             </div>
           </div>
           <div class="project-image">
