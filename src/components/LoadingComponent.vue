@@ -119,7 +119,7 @@ watch(
     rgba(255, 255, 255, 0.8),
     rgba(255, 255, 255, 0)
   );
-  animation: progress-shine 4s linear infinite;
+  animation: progress-shine 2s linear infinite;
   box-shadow: 0 0 10px 3px rgba(255, 255, 255, 0.5); /* Reduced shadow for thinner bar */
 }
 

@@ -191,7 +191,7 @@ const scrollToSection = (e, sectionId) => {
   width: 100%;
   height: 25px; /* Fixed height for shine effect */
   background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8), transparent);
-  animation-duration: 4s;
+  animation-duration: 2s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -199,22 +199,22 @@ const scrollToSection = (e, sectionId) => {
 /* Line-specific shine animations */
 .line-animate-1::after {
   animation-name: shine-effect-1;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 }
 
 .line-animate-2::after {
   animation-name: shine-effect-2;
-  animation-delay: 2s;
+  animation-delay: 1s;
 }
 
 .line-animate-3::after {
   animation-name: shine-effect-3;
-  animation-delay: 3s;
+  animation-delay: 1.5s;
 }
 
 .line-animate-4::after {
   animation-name: shine-effect-4;
-  animation-delay: 4s;
+  animation-delay: 2s;
 }
 
 /* Specific animations for each line type to ensure precise control */
