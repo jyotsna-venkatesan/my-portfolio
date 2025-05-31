@@ -274,7 +274,7 @@ const projectColors = ref([
       'radial-gradient(circle at center, rgba(255, 0, 64, 0.6) 10%, rgba(255, 0, 64, 0) 70%)',
   },
   {
-    bg: '#435F3F', // light green
+    bg: '#75272C', // red
     text: '#64FFDA',
     shadow: '0 0 8px #00C7B7',
     blob1Color:
@@ -296,7 +296,7 @@ const projectColors = ref([
       'radial-gradient(circle at center, rgba(221, 120, 255, 0.65) 10%, rgba(221, 120, 255, 0) 70%)',
   },
   {
-    bg: '#1E2E5C', // dark blue
+    bg: '#22462D', // green
     text: '#F8D56B',
     shadow: '0 0 8px #F1C232',
     blob1Color:
