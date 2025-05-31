@@ -26,7 +26,9 @@
                 and cloud-based virtual devices.
               </p>
 
-              <div class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"></div>
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
             </div>
 
             <!-- Experience 2 -->
@@ -42,7 +44,9 @@
                 Automated the sanity and regression test suite of the client app.
               </p>
 
-              <div class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"></div>
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
             </div>
 
             <!-- Experience 3 -->
@@ -59,7 +63,9 @@
                 accessibility and user experience.
               </p>
 
-              <div class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"></div>
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
             </div>
 
             <!-- Experience 4 -->
@@ -76,7 +82,9 @@
                 performance optimization.
               </p>
 
-              <div class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"></div>
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
             </div>
 
             <!-- Experience 5 -->
@@ -91,7 +99,9 @@
                 Robot.
               </p>
 
-              <div class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"></div>
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
             </div>
 
             <!-- Experience 6 -->
@@ -107,7 +117,60 @@
                 Created engaging digital content to increase brand awareness and engagement.
               </p>
 
-              <div class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"></div>
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
+            </div>
+
+            <!-- Experience 7 -->
+            <div class="mb-10 experience-item" ref="expItem6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-[#030303]">Web Developer at Auxiliors</h3>
+                <span class="text-sm text-[#030303] font-light">May 2021 - Aug 2022</span>
+              </div>
+
+              <p class="text-[#030303] mb-6">
+                Lead sessions on self-confidence and worked on the website development
+              </p>
+
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
+            </div>
+
+            <!-- Experience 8 -->
+            <div class="mb-10 experience-item" ref="expItem6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-[#030303]">
+                  Web Developer at Sleep Deprived Dreamers
+                </h3>
+                <span class="text-sm text-[#030303] font-light">Jun 2021 - Jul 2022</span>
+              </div>
+
+              <p class="text-[#030303] mb-6">
+                Got to work under my favorite youtuber to design and build a website for his
+                startup.
+              </p>
+
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
+            </div>
+
+            <!-- Experience 9 -->
+            <div class="mb-10 experience-item" ref="expItem6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-[#030303]">Web Developer at Flipbill</h3>
+                <span class="text-sm text-[#030303] font-light">Mar 2021 - Apr 2022</span>
+              </div>
+
+              <p class="text-[#030303] mb-6">
+                Designed and developed the company website in 2 weeks.
+              </p>
+
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
             </div>
           </div>
         </div>
