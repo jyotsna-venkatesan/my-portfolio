@@ -41,7 +41,7 @@
               </div>
 
               <p class="text-[#030303] mb-6">
-                esigning and developing features for an AI interview platform.
+                Designing and developing features for an AI interview platform.
               </p>
 
               <div
