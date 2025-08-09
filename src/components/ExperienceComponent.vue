@@ -17,6 +17,41 @@
             <!-- Experience 1 -->
             <div class="mb-10 experience-item" ref="expItem1">
               <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-[#030303]">Co-founder at Vexos</h3>
+                <span class="text-sm text-[#030303] font-light">Jun 2025 - Present</span>
+              </div>
+
+              <p class="text-[#030303] mb-6">
+                Building an AI-powered platform that helps businesses decide where to place their
+                assets! Currently in the HKSTP ideation program, working on our MVP.
+              </p>
+
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
+            </div>
+
+            <!-- Experience 2 -->
+            <div class="mb-10 experience-item" ref="expItem1">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-[#030303]">
+                  Gen AI Software Developer at Career Hackers
+                </h3>
+                <span class="text-sm text-[#030303] font-light">Jun 2025 - Present</span>
+              </div>
+
+              <p class="text-[#030303] mb-6">
+                esigning and developing features for an AI interview platform.
+              </p>
+
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
+            </div>
+
+            <!-- Experience 3 -->
+            <div class="mb-10 experience-item" ref="expItem1">
+              <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-semibold text-[#030303]">QA Automation Intern at GoGoX</h3>
                 <span class="text-sm text-[#030303] font-light">Sep 2024 - Dec 2024</span>
               </div>
@@ -31,7 +66,7 @@
               ></div>
             </div>
 
-            <!-- Experience 2 -->
+            <!-- Experience 4 -->
             <div class="mb-10 experience-item" ref="expItem2">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-semibold text-[#030303]">
@@ -49,7 +84,7 @@
               ></div>
             </div>
 
-            <!-- Experience 3 -->
+            <!-- Experience 5 -->
             <div class="mb-10 experience-item" ref="expItem3">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-semibold text-[#030303]">
@@ -68,7 +103,7 @@
               ></div>
             </div>
 
-            <!-- Experience 4 -->
+            <!-- Experience 6 -->
             <div class="mb-10 experience-item" ref="expItem4">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-semibold text-[#030303]">
@@ -87,7 +122,7 @@
               ></div>
             </div>
 
-            <!-- Experience 5 -->
+            <!-- Experience 7 -->
             <div class="mb-10 experience-item" ref="expItem5">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-semibold text-[#030303]">Student Assistant at CLP</h3>
@@ -104,7 +139,7 @@
               ></div>
             </div>
 
-            <!-- Experience 6 -->
+            <!-- Experience 8 -->
             <div class="mb-10 experience-item" ref="expItem6">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-semibold text-[#030303]">
@@ -122,7 +157,7 @@
               ></div>
             </div>
 
-            <!-- Experience 7 -->
+            <!-- Experience 9 -->
             <div class="mb-10 experience-item" ref="expItem6">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-semibold text-[#030303]">Web Developer at Auxiliors</h3>
@@ -138,7 +173,7 @@
               ></div>
             </div>
 
-            <!-- Experience 8 -->
+            <!-- Experience 10 -->
             <div class="mb-10 experience-item" ref="expItem6">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-semibold text-[#030303]">
@@ -157,7 +192,7 @@
               ></div>
             </div>
 
-            <!-- Experience 9 -->
+            <!-- Experience 11 -->
             <div class="mb-10 experience-item" ref="expItem6">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-semibold text-[#030303]">Web Developer at Flipbill</h3>
