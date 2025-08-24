@@ -121,7 +121,7 @@
       >
         <div class="project-content">
           <div class="project-info">
-            <h2 class="project-title">Vexos</h2>
+            <h2 class="project-title">Orbityr</h2>
             <p class="project-description">
               A location intelligence system that tells you exactly where to place anything -
               whether it’s a retail store, an EV charger, or a defense asset. Powered by the AI

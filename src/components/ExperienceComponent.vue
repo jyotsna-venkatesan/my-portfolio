@@ -17,7 +17,7 @@
             <!-- Experience 1 -->
             <div class="mb-10 experience-item" ref="expItem1">
               <div class="flex justify-between items-start mb-4">
-                <h3 class="text-xl font-semibold text-[#030303]">Co-founder at Vexos</h3>
+                <h3 class="text-xl font-semibold text-[#030303]">Co-founder at Orbityr</h3>
                 <span class="text-sm text-[#030303] font-light">Jun 2025 - Present</span>
               </div>
 
