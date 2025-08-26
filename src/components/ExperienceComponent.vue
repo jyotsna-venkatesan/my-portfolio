@@ -37,7 +37,7 @@
                 <h3 class="text-xl font-semibold text-[#030303]">
                   Gen AI Software Developer at Career Hackers
                 </h3>
-                <span class="text-sm text-[#030303] font-light">Jun 2025 - Present</span>
+                <span class="text-sm text-[#030303] font-light">Jun 2025 - Aug 2025</span>
               </div>
 
               <p class="text-[#030303] mb-6">
