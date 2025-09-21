@@ -98,7 +98,7 @@
         <p
           class="text-[14px] font-inter text-[#FD5B62] text-center lg:text-[14px] bg-[#030303] p-4"
         >
-          Penultimate CS Student @ HK PolyU
+          Final-year CS Student @ HK PolyU
         </p>
       </div>
 
