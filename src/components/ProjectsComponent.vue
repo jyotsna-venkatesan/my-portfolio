@@ -90,23 +90,24 @@
       >
         <div class="project-content">
           <div class="project-image">
-            <img src="/yuvoa.png" alt="AI-Powered Social Media Analytics Dashboard" />
+            <img src="/capstone.png" alt="Capstone Project Workflow Diagram" />
           </div>
           <div class="project-info">
-            <h2 class="project-title">Yuvoa</h2>
+            <h2 class="project-title">
+              Collaborative Large Language Model Inference at the Network Edge
+            </h2>
             <p class="project-description">
-              A collaborative space for student teams to manage projects, share progress, and
-              actually enjoy working together.
+              Implemented a prototype system for collaborative LLM inference across networked edge
+              devices, focusing on inference-time privacy protection under an honest-but-curious
+              threat model. Designed a master–worker tensor-parallel architecture and implemented
+              Selective Hidden-State Obfuscation (SHSO) via layer-aware forward hooks to selectively
+              perturb early-layer hidden states.
             </p>
             <div class="tech-stack">
-              <span>Svelte</span>
-              <span>Gleam</span>
+              <span>Python</span>
+              <span>Distributed Systems</span>
             </div>
-            <div class="project-links">
-              <a href="https://github.com/jyotsna-venkatesan/yuvoa" class="project-link"
-                >Go to GitHub →</a
-              >
-            </div>
+            <div class="project-links"></div>
           </div>
         </div>
       </div>
@@ -274,7 +275,7 @@ const projectColors = ref([
       'radial-gradient(circle at center, rgba(255, 0, 64, 0.6) 10%, rgba(255, 0, 64, 0) 70%)',
   },
   {
-    bg: '#75272C', // red
+    bg: '#703c1e', // gold
     text: '#64FFDA',
     shadow: '0 0 8px #00C7B7',
     blob1Color:

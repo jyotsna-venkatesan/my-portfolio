@@ -14,7 +14,62 @@
 
           <!-- Experience timeline on the right -->
           <div class="md:w-2/3 mt-16">
+            <!-- Experience -2 -->
+            <div class="mb-10 experience-item" ref="expItem1">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-[#030303]">
+                  Technology Risk Consultant at KPMG
+                </h3>
+                <span class="text-sm text-[#030303] font-light">Feb 2026 - Present</span>
+              </div>
+
+              <p class="text-[#030303] mb-6">
+                About to dive into technology risk, governance, and controls at KPMG.
+              </p>
+
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
+            </div>
+
+            <!-- Experience -1 -->
+            <div class="mb-10 experience-item" ref="expItem1">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-[#030303]">
+                  Web Designer and Developer at the All India Collection Professionals Network
+                </h3>
+                <span class="text-sm text-[#030303] font-light">Dec 2025 - Present</span>
+              </div>
+
+              <p class="text-[#030303] mb-6">
+                Designing and developing a polished, formal website that reflects AICPN’s
+                professional identity.
+              </p>
+
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
+            </div>
+
+            <!-- Experience 0 -->
+            <div class="mb-10 experience-item" ref="expItem1">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-[#030303]">AI Consultant at Jordan</h3>
+                <span class="text-sm text-[#030303] font-light">Sep 2025 - Present</span>
+              </div>
+
+              <p class="text-[#030303] mb-6">
+                Building AI-powered voice personas with long-term memory, designed to feel human,
+                context-aware, and surprisingly good at conversation.
+              </p>
+
+              <div
+                class="h-[2px] bg-gradient-to-r from-transparent via-[#FF0000] to-transparent w-full mt-6"
+              ></div>
+            </div>
+
             <!-- Experience 1 -->
+
             <div class="mb-10 experience-item" ref="expItem1">
               <div class="flex justify-between items-start mb-4">
                 <h3 class="text-xl font-semibold text-[#030303]">Co-founder at Orbityr</h3>
